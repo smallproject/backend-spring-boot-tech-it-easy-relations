@@ -59,10 +59,11 @@ _Let op_: het is uitdagender om jouw eigen stappenplan te maken. Mocht je niet z
 9. Voeg de functie "assignRemoteControllerToTelevision" toe in de `TelevisionService`. Zoals je ziet, herkent de `TelevisionService` de `RemoteControllerRepository` niet, dit komt omdat we deze nog niet gekoppeld hebben in de constructor, gelukkig hoef je niet alles opnieuw te doen. Je kan bovenaan in de `TelevisionService` onder de private `TelevisionRepository` een private `RemoteControllerRepository` declareren. En dan in de bestaande constructor deze toevoegen op dezelfde manier als de `TelevisionRepository`. Dit resulteert in: 
 
  ```java
-public TelevisionService (TelevisionRepository televisionRepository, RemoteControllerRepository remoteControllerRepository) {
- this.televisionRepository = televisionRepository;
- this.remoteControllerRepository = remoteControllerRepository;
- }
+ public TelevisionService (TelevisionRepository televisionRepository, 
+                          RemoteControllerRepository remoteControllerRepository) {
+    this.televisionRepository = televisionRepository;
+    this.remoteControllerRepository = remoteControllerRepository;
+}
  ```
  
 10. Om deze functie uit te kunnen voeren moet je in de `TelevisionController` een _PutRequest_ maken met endpoint _"/televisions/{id}/remotecontroller"_ om aan te spreken. Voeg deze toe en geef de _televisionId_ mee als _@PathVariable_ en de _remoteControllerId_ als _@RequestBody_ door middel van een `IdInputDto` _input_.  
