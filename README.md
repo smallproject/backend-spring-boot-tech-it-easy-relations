@@ -14,7 +14,7 @@ In deze opdracht ga je aan de slag met het toevoegen van relaties aan je applica
 ## Randvoorwaarden
 De opdracht moet voldoen aan de volgende voorwaarden:
 
-Het project bevat de volgende `Models`:
+Het project bevat de volgende `models`:
   - `Television`
   - `RemoteController` met de _variables_: 
     -_Long_`id`
@@ -48,11 +48,11 @@ Je mag de constructors uit de modellen weglaten. Deze vult Spring Boot automatis
 ## Stappenplan
 _Let op_: het is uitdagender om jouw eigen stappenplan te maken. Mocht je niet zo goed weten waar je moet beginnen, kun je onderstaand stappenplan volgen:
 
-1. Maak in de map `Models` een _klasse_ aan voor `RemoteController`, `CI-Module` en `WallBracket` (voeg de juiste _annotatie_, _variables_, _getters&setters_ en _constructors_ toe).
-2. Maak in de map `Repositories` voor elk model een `Repository` aan (die elk de `JpaRepository` _extends_ bevat).
-3. Maak in de map `Controllers` voor elk model een `Controller` aan (met juiste _annotatie_, constructor en _requestMappings_).
-4. Maak in de map `Dtos` voor elk model een `Dto` en `InputDto` aan (met juiste _variables_ en toewijzingen).
-5. Maak in de map `Services` voor elk model een `Service` aan (met juiste _annotatie_, constructor en _functions_).
+1. Maak in de map `models` een _klasse_ aan voor `RemoteController`, `CI-Module` en `WallBracket` (voeg de juiste _annotatie_, _variables_, _getters&setters_ en _constructors_ toe).
+2. Maak in de map `repositories` voor elk model een `Repository` aan (die elk de `JpaRepository` _extends_ bevat).
+3. Maak in de map `controllers` voor elk model een `Controller` aan (met juiste _annotatie_, constructor en _requestMappings_).
+4. Maak in de map `dtos` voor elk model een `Dto` en `InputDto` aan (met juiste _variables_ en toewijzingen).
+5. Maak in de map `services` voor elk model een `Service` aan (met juiste _annotatie_, constructor en _functions_).
 6. Leg een OneToOne relatie tussen `Television` en `RemoteController` door in beide _models_ _@OneToOne_ toe te voegen, gevolgd door het model waar de relatie mee ligt in de vorm van `Model` `object` (bijvoorbeeld `Television` `television`) op de volgende regel.
 7. Een OneToOne relatie heeft een eigenaar nodig. Maak de `Television` eigenaar door in `RemoteController` achter de _@OneToOne_ _mappedBy_ toe te voegen op deze manier _@OneToOne(mappedBy = "remotecontroller"). Dit zorgt ervoor dat in de `Television` tabel een kolom wordt toegevoegd met de naam `remotecontroller_id`. Vergeet niet de getter en setter toe te voegen na het leggen van de relatie in de modellen.
 8. Om deze kolom te vullen zal je in _servicelaag_ ook een functie moeten maken die een koppeling maakt tussen de `Television` en de `RemoteController`. Dit doe je in de `TelevisionService`.
