@@ -6,7 +6,7 @@ Je bent net begonnen als developer bij een bedrijf dat TV's verkoopt: Tech It Ea
 
 ## Recap van vorige opdracht
 
-Je hebt inmiddels je applicatie draaiende gekregen. Dit geeft je de mogelijkheid om in een database bij te houden welke tv's er zijn in de inventaris van TechItEasy. Als je de benamingen hebt aangehouden die we tot nu toe hebben gebruikt, kunnen we een _data.sql_ gaan maken waardoor we gegevens in de database kunnen zetten. Dit is een soort van pre-fill van je database. 
+Je hebt inmiddels [je applicatie draaiende gekregen](https://github.com/hogeschoolnovi/backend-spring-boot-tech-it-easy-service-dto-uitwerkingen). Dit geeft je de mogelijkheid om in een database bij te houden welke tv's er zijn in de inventaris van TechItEasy. Als je de benamingen hebt aangehouden die we tot nu toe hebben gebruikt, kunnen we een _data.sql_ gaan maken waardoor we gegevens in de database kunnen zetten. Dit is een soort van pre-fill van je database. 
 
 ## Opdrachtbeschrijving
 In deze opdracht ga je aan de slag met het toevoegen van relaties aan je applicatie.
