@@ -32,7 +32,7 @@ Het project bevat de volgende `models`:
   - `WallBracket` met de _variables_:
     -_Long_ `id`
     -_String_ `size`
-    -_Boolean_ `ajustable`
+    -_Boolean_ `adjustable`
     -_String_ `name`
     -_Double_ `price`
 Voor elk van deze modellen bevat je applicatie ook een `Repository`, `Controller`, `Dto`, `InputDto` en een `Service`.
