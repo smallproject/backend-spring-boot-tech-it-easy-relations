@@ -83,12 +83,11 @@ Stappenplan CiModule
  
 1. Een OneToMany relatie heeft een eigenaar nodig. Maak de `Television` eigenaar door in `CiModule` achter de _@OneToMany_ _mappedBy_ toe te voegen op deze manier `@ManyToOne(fetch = Fetchtype.EAGER) @JoinColumn(name = "ci_module_id")`. Dit zorgt ervoor dat in de `Television` tabel een kolom wordt toegevoegd met de naam `ci_module_id`. Vergeet niet de getter en setter toe te voegen na het leggen van de relatie in de modellen.
 2. Om deze kolom te vullen zal je in _servicelaag_ ook een functie moeten maken die een koppeling maakt tussen de `Television` en de `CiModule`. Dit doe je in de `TelevisionService`.
-3. Voeg de functie "assignCiModuleToTelevision" toe in de `TelevisionService`. Zoals je ziet, herkent de `TelevisionService` de `CiModuleRepository` niet, dit komt omdat we deze nog niet gekoppeld hebben in de constructor, gelukkig hoef je niet alles opnieuw te doen. Je kan bovenaan in de `TelevisionService` onder de private `TelevisionRepository` een private `CiModuleRepository` declareren. En dan in de bestaande constructor deze toevoegen op dezelfde manier als de `TelevisionRepository`.
+3. Voeg de functie "assignCiModuleToTelevision" toe in de `TelevisionService`. Zoals je ziet, herkent de `TelevisionService` de `CiModuleRepository` niet (door de rode kringeltjes), dit komt omdat we deze nog niet gekoppeld hebben in de constructor, gelukkig hoef je niet alles opnieuw te doen. Je kan bovenaan in de `TelevisionService` onder de private `TelevisionRepository` een private `CiModuleRepository` declareren. En dan in de bestaande constructor deze toevoegen op dezelfde manier als de `TelevisionRepository`.
  
 4. Om deze functie uit te kunnen voeren moet je in de `TelevisionController` een _PutRequest_ maken met endpoint _"/televisions/{id}/cimodule"_ om aan te spreken. Voeg deze toe en geef de _televisionId_ mee als _@PathVariable_ en de _cimoduleId_ als _@RequestBody_ door middel van een `IdInputDto` _input_.  
-5. Gefeliciteerd, je hebt zo juist de relatie gelegd in je applicatie!
-6. Alleen als je nu met een get alle `Televisions` ophaalt, zie je geen `CiModule`. Dit komt omdat we in de `TelevisionDto` nog niks hebben verteld over de `CiModuleDto`. De makkelijkste manier om hier de connectie te leggen is de `public CiModuleDto ciModuleDto;` toe te voegen aan de variabele van de `TelevisionDto` 
-7. Test alle functies die je tot nu toe hebt gemaakt met Postman.
+5. Alleen als je nu met een get alle `Televisions` ophaalt, zie je geen `CiModule`. Dit komt omdat we in de `TelevisionDto` nog niks hebben verteld over de `CiModuleDto`. De makkelijkste manier om hier de connectie te leggen is de `public CiModuleDto ciModuleDto;` toe te voegen aan de variabele van de `TelevisionDto` 
+6. Test alle functies die je tot nu toe hebt gemaakt met Postman.
 </details>
 
 
@@ -101,11 +100,10 @@ Stappenplan WallBracket
 1. Een ManyToMany relatie heeft een eigenaar nodig. Maak de `Television` eigenaar door in `WallBracket` achter de _@ManyToMany_ _mappedBy_ toe te voegen op deze manier
 `@ManyToMany
  @JoinTable(name = "television_Wallbrackets", joinColumns @JoinColumn(name = "television"), inverseJoinColumns = @JoinColumn(name = "wallbracket")` . Dit zorgt ervoor dat er een koppeltabel wordt aangemaakt met het id van de television en het id van de wallbracket. Vergeet niet de getter en setter toe te voegen na het leggen van de relatie in de modellen.
-3. Om deze kolom te vullen zal je in _servicelaag_ ook een functie moeten maken die een koppeling maakt tussen de `Television` en de `WallBracket`. Dit doe je in de `TelevisionService`.
-4. Voeg de functie "assignWallBracketToTelevision" toe in de `TelevisionService`. Zoals je ziet, herkent de `TelevisionService` de `WallBracketRepository` niet, dit komt omdat we deze nog niet gekoppeld hebben in de constructor, gelukkig hoef je niet alles opnieuw te doen. Je kan bovenaan in de `TelevisionService` onder de private `TelevisionRepository` een private `WallBracketRepository` declareren. En dan in de bestaande constructor deze toevoegen op dezelfde manier als de `TelevisionRepository`.
+2. Om deze kolom te vullen zal je in _servicelaag_ ook een functie moeten maken die een koppeling maakt tussen de `Television` en de `WallBracket`. Dit doe je in de `TelevisionService`.
+3. Voeg de functie "assignWallBracketToTelevision" toe in de `TelevisionService`. Zoals je ziet, herkent de `TelevisionService` de `WallBracketRepository` niet (door de rode kringeltjes), dit komt omdat we deze nog niet gekoppeld hebben in de constructor, gelukkig hoef je niet alles opnieuw te doen. Je kan bovenaan in de `TelevisionService` onder de private `TelevisionRepository` een private `WallBracketRepository` declareren. En dan in de bestaande constructor deze toevoegen op dezelfde manier als de `TelevisionRepository`.
  
-5. Om deze functie uit te kunnen voeren moet je in de `TelevisionController` een _PutRequest_ maken met endpoint _"/televisions/{id}/wallbracket"_ om aan te spreken. Voeg deze toe en geef de _televisionId_ mee als _@PathVariable_ en de _wallbracketId_ als _@RequestBody_ door middel van een `IdInputDto` _input_.  
-6. Gefeliciteerd, je hebt zo juist de relatie gelegd in je applicatie!
-7. Alleen als je nu met een get alle `Televisions` ophaalt, zie je geen `WallBracket`. Dit komt omdat we in de `TelevisionDto` nog niks hebben verteld over de `WallbracketDto`. De makkelijkste manier om hier de connectie te leggen is de `public WallbracketDto wallbracketDto;` toe te voegen aan de variabele van de `TelevisionDto` 
-8. Test alle functies die je tot nu toe hebt gemaakt met Postman.
+4. Om deze functie uit te kunnen voeren moet je in de `TelevisionController` een _PutRequest_ maken met endpoint _"/televisions/{id}/wallbracket"_ om aan te spreken. Voeg deze toe en geef de _televisionId_ mee als _@PathVariable_ en de _wallbracketId_ als _@RequestBody_ door middel van een `IdInputDto` _input_.  
+5. Alleen als je nu met een get alle `Televisions` ophaalt, zie je geen `WallBracket`. Dit komt omdat we in de `TelevisionDto` nog niks hebben verteld over de `WallbracketDto`. De makkelijkste manier om hier de connectie te leggen is de `public WallbracketDto wallbracketDto;` toe te voegen aan de variabele van de `TelevisionDto` 
+6. Test alle functies die je tot nu toe hebt gemaakt met Postman.
 </details>
