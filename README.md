@@ -77,7 +77,7 @@ Je hebt nu de relatie tussen de televisie en remoteController gemaakt. Maak nu r
 Mocht je er niet uit komen:
 <details>
 <summary>
-Stappenplan koppelen Televisie aan CiModule
+Stappenplan Televisie koppelen aan CiModule
 </summary>
 
  
