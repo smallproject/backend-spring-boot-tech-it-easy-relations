@@ -69,9 +69,87 @@ _Let op_: het is uitdagender om jouw eigen stappenplan te maken. Mocht je niet z
 10. Om deze functie uit te kunnen voeren moet je in de `TelevisionController` een _PutRequest_ maken met endpoint _"/televisions/{id}/remotecontroller"_ om aan te spreken. Voeg deze toe en geef de _televisionId_ mee als _@PathVariable_ en de _remoteControllerId_ als _@RequestBody_ door middel van een `IdInputDto` _input_.  
 11. Hiervoor missen we nog de `IdInputDto`. Maak in het mapje `Dtos` een nieuwe klasse aan voor de `IdInputDto`. Declareer in deze dto een _public Long id_ toe, meer hoeft er niet in.
 12. Gefeliciteerd, je hebt zo juist de eerste relatie gelegd in je applicatie!
-13. Alleen als je nu met een get alle `Televisions` ophaalt, zie je geen `RemoteController`. Dit komt omdat we in de `TelevisionDto` nog niks hebben verteld over de `RemoteController`. De makkelijkste manier om hier de connectie te leggen is de `public RemoteControllerDto remoteController;` toe te voegen aan de variabele van de `TelevisionDto` 
+13. Alleen als je nu met een get alle `Televisions` ophaalt, zie je geen `RemoteController`. Dit komt omdat we in de `TelevisionDto` nog niks hebben verteld over de `RemoteController`. De makkelijkste manier om hier de uitbreiding te leggen is de `public RemoteControllerDto remoteController;` toe te voegen aan de variabele van de `TelevisionDto` 
 14. Test alle functies die je tot nu toe hebt gemaakt met Postman.
 
-## Bonusopdrachten
-In deze opdracht heb ik een relatie uitgelegd aan de hand van het stappenplan. Als je hier makkelijk doorheen gaat, mag je ook de _one to many_ relatie maken tussen `Television` en `CIModule`. Hierbij is het nodig dat meerdere tv's één ci-module kunnen hebben. 
-Als zelfs de _one to many_ redelijk eenvoudig voor je is, mag je een _many to many_ relatie leggen tussen `Television` en `WallBracket`. Dus meerdere tv's kunnen meerdere wallbrackets hebben en andersom.
+Je hebt nu de relatie tussen de televisie en remoteController gemaakt. Maak nu relatie tussen Televisie en CiModule en Televisie en Wallbracket.
+
+Mocht je er niet uit komen:
+<details>
+<summary>
+Stappenplan Televisie koppelen aan CiModule
+</summary>
+
+ 
+### Stap 1: De OneToMany relatie toevoegen
+
+- Maak de Television eigenaar door in CiModule achter @OneToMany mappedBy toe te voegen.
+- Voeg in Television @ManyToOne(fetch = FetchType.EAGER) en @JoinColumn(name = "ci_module_id") toe.
+- Vergeet de getter en setter niet.
+
+### Stap 2: Functie in de servicelaag maken
+
+- Maak een functie in TelevisionService om een CiModule aan een Television te koppelen.
+
+### Stap 3: Functie "assignCiModuleToTelevision" toevoegen
+
+- Voeg in TelevisionService een private CiModuleRepository toe en initialiseer deze in de constructor.
+- Voeg de functie assignCiModuleToTelevision toe.
+
+### Stap 4: PutRequest in de controller maken
+
+- Maak in de TelevisionController een PUT endpoint "/televisions/{id}/cimodule" aan.
+- Gebruik @PathVariable voor televisionId en @RequestBody met een IdInputDto voor cimoduleId.
+
+### Stap 5: Dto connectie maken
+
+- Voeg in TelevisionDto de variabele public CiModuleDto ciModuleDto; toe.
+
+### Stap 6: Functies testen met Postman
+
+- Test alle functies die je tot nu toe hebt gemaakt met Postman.
+- Test onder andere het koppelen van een CiModule aan een Television en het ophalen van alle Televisions om te controleren of de CiModule correct is gekoppeld.
+
+</details>
+
+
+<details>
+<summary>
+Stappenplan Televisie koppelen aan WallBracket
+</summary>
+
+### Stap 1: De ManyToMany relatie toevoegen
+
+- Maak de Television eigenaar door in WallBracket achter @ManyToMany mappedBy toe te voegen.
+- Voeg in Television
+` @ManyToMany
+  @JoinTable(name = "television_Wallbrackets",
+   joinColumns @JoinColumn(name = "television"),
+   inverseJoinColumns = @JoinColumn(name = "wallbracket")`
+toe.
+- Vergeet de getter en setter niet.
+
+### Stap 2: Functie in de servicelaag maken
+
+- Maak een functie in TelevisionService om een WallBracket aan een Television te koppelen.
+
+### Stap 3: Functie "assignCiModuleToTelevision" toevoegen
+
+- Voeg in TelevisionService een private WallBracketRepository toe en initialiseer deze in de constructor.
+- Voeg de functie assignWallBracketToTelevision toe.
+
+### Stap 4: PutRequest in de controller maken
+
+- Maak in de TelevisionController een PUT endpoint "/televisions/{id}/WallBracket" aan.
+- Gebruik @PathVariable voor televisionId en @RequestBody met een IdInputDto voor de WallBracket.
+
+### Stap 5: Dto connectie maken
+
+- Voeg in TelevisionDto de variabele public WallBracketDto wallBracketdto; toe.
+
+### Stap 6: Functies testen met Postman
+
+- Test alle functies die je tot nu toe hebt gemaakt met Postman.
+- Test onder andere het koppelen van een WallBracket aan een Television en het ophalen van alle Televisions om te controleren of de WallBracket correct is gekoppeld.
+  
+</details>
