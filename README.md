@@ -69,7 +69,7 @@ _Let op_: het is uitdagender om jouw eigen stappenplan te maken. Mocht je niet z
 10. Om deze functie uit te kunnen voeren moet je in de `TelevisionController` een _PutRequest_ maken met endpoint _"/televisions/{id}/remotecontroller"_ om aan te spreken. Voeg deze toe en geef de _televisionId_ mee als _@PathVariable_ en de _remoteControllerId_ als _@RequestBody_ door middel van een `IdInputDto` _input_.  
 11. Hiervoor missen we nog de `IdInputDto`. Maak in het mapje `Dtos` een nieuwe klasse aan voor de `IdInputDto`. Declareer in deze dto een _public Long id_ toe, meer hoeft er niet in.
 12. Gefeliciteerd, je hebt zo juist de eerste relatie gelegd in je applicatie!
-13. Alleen als je nu met een get alle `Televisions` ophaalt, zie je geen `RemoteController`. Dit komt omdat we in de `TelevisionDto` nog niks hebben verteld over de `RemoteController`. De makkelijkste manier om hier de connectie te leggen is de `public RemoteControllerDto remoteController;` toe te voegen aan de variabele van de `TelevisionDto` 
+13. Alleen als je nu met een get alle `Televisions` ophaalt, zie je geen `RemoteController`. Dit komt omdat we in de `TelevisionDto` nog niks hebben verteld over de `RemoteController`. De makkelijkste manier om hier de uitbreiding te leggen is de `public RemoteControllerDto remoteController;` toe te voegen aan de variabele van de `TelevisionDto` 
 14. Test alle functies die je tot nu toe hebt gemaakt met Postman.
 
 Je hebt nu de relatie tussen de televisie en remoteController gemaakt. Maak nu relatie tussen Televisie en CiModule en Televisie en Wallbracket.
@@ -86,7 +86,7 @@ Stappenplan Televisie koppelen aan CiModule
 3. Voeg de functie "assignCiModuleToTelevision" toe in de `TelevisionService`. Zoals je ziet, herkent de `TelevisionService` de `CiModuleRepository` niet (door de rode kringeltjes), dit komt omdat we deze nog niet gekoppeld hebben in de constructor, gelukkig hoef je niet alles opnieuw te doen. Je kan bovenaan in de `TelevisionService` onder de private `TelevisionRepository` een private `CiModuleRepository` declareren. En dan in de bestaande constructor deze toevoegen op dezelfde manier als de `TelevisionRepository`.
  
 4. Om deze functie uit te kunnen voeren moet je in de `TelevisionController` een _PutRequest_ maken met endpoint _"/televisions/{id}/cimodule"_ om aan te spreken. Voeg deze toe en geef de _televisionId_ mee als _@PathVariable_ en de _cimoduleId_ als _@RequestBody_ door middel van een `IdInputDto` _input_.  
-5. Alleen als je nu met een get alle `Televisions` ophaalt, zie je geen `CiModule`. Dit komt omdat we in de `TelevisionDto` nog niks hebben verteld over de `CiModuleDto`. De makkelijkste manier om hier de connectie te leggen is de `public CiModuleDto ciModuleDto;` toe te voegen aan de variabele van de `TelevisionDto` 
+5. Alleen als je nu met een get alle `Televisions` ophaalt, zie je geen `CiModule`. Dit komt omdat we in de `TelevisionDto` nog niks hebben verteld over de `CiModuleDto`. De makkelijkste manier om hier de uitbreiding te leggen is de `public CiModuleDto ciModuleDto;` toe te voegen aan de variabele van de `TelevisionDto` 
 6. Test alle functies die je tot nu toe hebt gemaakt met Postman.
 </details>
 
@@ -104,6 +104,6 @@ Stappenplan Televisie koppelen aan WallBracket
 3. Voeg de functie "assignWallBracketToTelevision" toe in de `TelevisionService`. Zoals je ziet, herkent de `TelevisionService` de `WallBracketRepository` niet (door de rode kringeltjes), dit komt omdat we deze nog niet gekoppeld hebben in de constructor, gelukkig hoef je niet alles opnieuw te doen. Je kan bovenaan in de `TelevisionService` onder de private `TelevisionRepository` een private `WallBracketRepository` declareren. En dan in de bestaande constructor deze toevoegen op dezelfde manier als de `TelevisionRepository`.
  
 4. Om deze functie uit te kunnen voeren moet je in de `TelevisionController` een _PutRequest_ maken met endpoint _"/televisions/{id}/wallbracket"_ om aan te spreken. Voeg deze toe en geef de _televisionId_ mee als _@PathVariable_ en de _wallbracketId_ als _@RequestBody_ door middel van een `IdInputDto` _input_.  
-5. Alleen als je nu met een get alle `Televisions` ophaalt, zie je geen `WallBracket`. Dit komt omdat we in de `TelevisionDto` nog niks hebben verteld over de `WallbracketDto`. De makkelijkste manier om hier de connectie te leggen is de `public WallbracketDto wallbracketDto;` toe te voegen aan de variabele van de `TelevisionDto` 
+5. Alleen als je nu met een get alle `Televisions` ophaalt, zie je geen `WallBracket`. Dit komt omdat we in de `TelevisionDto` nog niks hebben verteld over de `WallbracketDto`. De makkelijkste manier om hier de uitbreiding te leggen is de `public WallbracketDto wallbracketDto;` toe te voegen aan de variabele van de `TelevisionDto` 
 6. Test alle functies die je tot nu toe hebt gemaakt met Postman.
 </details>
