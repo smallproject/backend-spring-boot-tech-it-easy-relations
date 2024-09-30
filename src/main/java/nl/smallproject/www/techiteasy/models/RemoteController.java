@@ -3,7 +3,7 @@ package nl.smallproject.www.techiteasy.models;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "remotecontroller")
+@Table(name = "remotecontrollers")
 public class RemoteController {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,6 +23,17 @@ public class RemoteController {
 
     @Column(name = "price")
     private double price;
+
+    @Column(name = "originalstock")
+    private int originalStock;
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
 
     public String getCompatibleWith() {
         return compatibleWith;
@@ -71,7 +82,4 @@ public class RemoteController {
     public void setOriginalStock(int originalStock) {
         this.originalStock = originalStock;
     }
-
-    @Column(name = "originalstock")
-    private int originalStock;
 }
