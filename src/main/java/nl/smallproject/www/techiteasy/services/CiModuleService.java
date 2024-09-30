@@ -7,6 +7,8 @@ import nl.smallproject.www.techiteasy.models.CiModule;
 import nl.smallproject.www.techiteasy.repositories.CiModuleRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -17,6 +19,17 @@ public class CiModuleService {
     public CiModuleService(CiModuleRepository ciModuleRepository, CiModuleMapper ciModuleMapper) {
         this.ciModuleRepository = ciModuleRepository;
         this.ciModuleMapper = ciModuleMapper;
+    }
+
+    public List<CiModuleOutputDto> getAllCiModules() {
+        List<CiModule> ciModules = ciModuleRepository.findAll();
+        List<CiModuleOutputDto> ciModuleOutputDtos = new ArrayList<>();
+
+        for (CiModule ciModule : ciModules) {
+            ciModuleOutputDtos.add(ciModuleMapper.ciModuleEntityToOutputDto(ciModule));
+        }
+
+        return ciModuleOutputDtos;
     }
 
     public CiModuleOutputDto getCiModuleById(Long id) {
