@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 
 
 @Entity
-@Table(name = "cimodule")
+@Table(name = "cimodules")
 public class CiModule {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
