@@ -2,6 +2,7 @@ package nl.smallproject.www.techiteasy.mappers;
 
 import nl.smallproject.www.techiteasy.dtos.RemoteControllerInputDto;
 import nl.smallproject.www.techiteasy.dtos.RemoteControllerOutputDto;
+import nl.smallproject.www.techiteasy.dtos.RemoteControllerUpdateDto;
 import nl.smallproject.www.techiteasy.models.RemoteController;
 import org.springframework.stereotype.Component;
 
@@ -27,6 +28,17 @@ public class RemoteControllerMapper {
         remoteController.setBrand(remoteControllerInputDto.getBrand());
         remoteController.setPrice(remoteControllerInputDto.getPrice());
         remoteController.setOriginalStock(remoteControllerInputDto.getOriginalStock());
+        return remoteController;
+    }
+
+    public RemoteController remoteControllerUpdateDtoToEntity(RemoteControllerUpdateDto remoteControllerUpdateDto) {
+        RemoteController remoteController = new RemoteController();
+        remoteController.setCompatibleWith(remoteControllerUpdateDto.getCompatibleWith());
+        remoteController.setBatteryType(remoteControllerUpdateDto.getBatteryType());
+        remoteController.setName(remoteControllerUpdateDto.getName());
+        remoteController.setBrand(remoteControllerUpdateDto.getBrand());
+        remoteController.setPrice(remoteControllerUpdateDto.getPrice());
+        remoteController.setOriginalStock(remoteControllerUpdateDto.getOriginalStock());
         return remoteController;
     }
 }
