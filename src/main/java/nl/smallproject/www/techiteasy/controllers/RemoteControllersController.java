@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1/remotecontroller")
@@ -19,6 +20,12 @@ public class RemoteControllersController {
 
     public RemoteControllersController(RemoteControllerService remoteControllerService) {
         this.remoteControllerService = remoteControllerService;
+    }
+
+    @RequestMapping(method = RequestMethod.GET)
+    public ResponseEntity<List<RemoteControllerOutputDto>> getAllRemoteControllers() {
+        List<RemoteControllerOutputDto> remoteControllers = remoteControllerService.getAllRemoteControllers();
+        return ResponseEntity.ok(remoteControllers);
     }
 
     @RequestMapping(value = "{id}", method = RequestMethod.GET)
