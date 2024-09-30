@@ -33,9 +33,6 @@ VALUES
     ('16', 'true', '72.5', '579', 'true', '10', 'true', '127', 'true', '2024-09-10', 'Sony', 'Bravia A90J (2023)', 'Ultra HD 4K', 'OLED', 'Smart TV'),
     ('24', 'false', '55.0', '259', 'true', '4', 'false', '114', 'true', '2024-09-15', 'Toshiba', '50C350KU', 'Full HD', 'LED', 'Smart TV');
 
-
-
-
 -- CiModules
 INSERT INTO public.cimodules (name, type, price)
 VALUES
@@ -89,3 +86,47 @@ VALUES
     ('Module A48', 'Type1', 560.75),
     ('Module A49', 'Type3', 570.30),
     ('Module A50', 'Type2', 580.50);
+
+-- Remote controllers
+INSERT INTO public.remotecontrollers (compatiblewith, batterytype, name, brand, price, originalstock)
+VALUES
+    ('Samsung TV', 'AA', 'Smart Remote Plus', 'Samsung', 29.99, 10),
+    ('LG TV', 'AAA', 'Magic Remote MR20GA', 'LG', 34.99, 10),
+    ('Sony TV', 'AA', 'Voice Remote RMF-TX500', 'Sony', 39.99, 10),
+    ('Panasonic TV', 'AAA', 'Universal Remote EUR765103', 'Panasonic', 19.99, 10),
+    ('Hisense TV', 'AAA', 'Remote EN2A27', 'Hisense', 24.99, 10),
+    ('TCL TV', 'AAA', 'Roku TV Remote RC280', 'TCL', 19.99, 10),
+    ('Philips TV', 'AA', 'Smart Remote Control SRP5016', 'Philips', 29.99, 10),
+    ('Vizio TV', 'AA', 'XRT136 Remote', 'Vizio', 25.99, 10),
+    ('Sharp TV', 'AAA', 'Universal Remote GB004WJSA', 'Sharp', 17.99, 10),
+    ('Toshiba TV', 'AAA', 'Fire TV Remote Edition', 'Toshiba', 21.99, 10),
+    ('Samsung TV', 'AA', 'One Remote BN59-01312A', 'Samsung', 32.99, 10),
+    ('LG TV', 'AAA', 'Universal Remote AKB75375604', 'LG', 18.99, 10),
+    ('Sony TV', 'AAA', 'Smart Remote RMF-TX200U', 'Sony', 26.99, 10),
+    ('Panasonic TV', 'AA', 'Remote N2QAYB000753', 'Panasonic', 22.99, 10),
+    ('Hisense TV', 'AAA', 'EN2BB27H Remote', 'Hisense', 20.99, 10),
+    ('TCL TV', 'AAA', 'Roku Remote for TCL TVs', 'TCL', 14.99, 10),
+    ('Philips TV', 'AA', 'SRP9141A Smart Remote', 'Philips', 28.99, 10),
+    ('Vizio TV', 'AAA', 'Universal Remote XRT122', 'Vizio', 24.99, 10),
+    ('Sharp TV', 'AA', 'Smart TV Remote GB005WJSA', 'Sharp', 19.99, 10),
+    ('Toshiba TV', 'AAA', 'Fire TV Edition Remote SE-R0356', 'Toshiba', 23.99, 10),
+    ('Samsung TV', 'AAA', 'Universal Remote BN59-01315J', 'Samsung', 30.99, 10),
+    ('LG TV', 'AA', 'Magic Remote MR19BA', 'LG', 35.99, 10),
+    ('Sony TV', 'AAA', 'Voice Remote RMF-TX600', 'Sony', 41.99, 10),
+    ('Panasonic TV', 'AA', 'Universal Remote N2QAYB001', 'Panasonic', 19.99, 10),
+    ('Hisense TV', 'AAA', 'Remote EN2BB27HS', 'Hisense', 25.99, 10),
+    ('TCL TV', 'AAA', 'Remote for TCL Roku TV RC280', 'TCL', 17.99, 10),
+    ('Philips TV', 'AA', 'Smart TV Remote SRP5018', 'Philips', 27.99, 10),
+    ('Vizio TV', 'AAA', 'Remote XRT140', 'Vizio', 22.99, 10),
+    ('Sharp TV', 'AAA', 'GB005WJSB Universal Remote', 'Sharp', 18.99, 10),
+    ('Toshiba TV', 'AA', 'Fire TV Remote Edition SE-R0355', 'Toshiba', 24.99, 10),
+    ('Samsung TV', 'AAA', 'Smart Remote BN59-01301A', 'Samsung', 33.99, 10),
+    ('LG TV', 'AAA', 'Magic Remote AKB75635302', 'LG', 31.99, 10),
+    ('Sony TV', 'AA', 'Smart Remote RMF-TX500U', 'Sony', 37.99, 10),
+    ('Panasonic TV', 'AAA', 'Remote N2QAYB00084A', 'Panasonic', 21.99, 10),
+    ('Hisense TV', 'AAA', 'Remote EN2B27HS', 'Hisense', 23.99, 10),
+    ('TCL TV', 'AA', 'Roku Universal Remote', 'TCL', 19.99, 10),
+    ('Philips TV', 'AAA', 'Remote SRP9241B', 'Philips', 29.99, 10),
+    ('Vizio TV', 'AA', 'Remote XRT150', 'Vizio', 26.99, 10),
+    ('Sharp TV', 'AAA', 'GB004SA Universal Remote', 'Sharp', 16.99, 10),
+    ('Toshiba TV', 'AAA', 'Universal Remote SE-R0353', 'Toshiba', 20.99, 10);
