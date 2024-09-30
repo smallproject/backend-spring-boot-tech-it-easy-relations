@@ -2,10 +2,12 @@ package nl.smallproject.www.techiteasy.services;
 
 import nl.smallproject.www.techiteasy.dtos.RemoteControllerInputDto;
 import nl.smallproject.www.techiteasy.dtos.RemoteControllerOutputDto;
+import nl.smallproject.www.techiteasy.dtos.RemoteControllerUpdateDto;
 import nl.smallproject.www.techiteasy.exceptions.RecordNotFoundException;
 import nl.smallproject.www.techiteasy.mappers.RemoteControllerMapper;
 import nl.smallproject.www.techiteasy.models.RemoteController;
 import nl.smallproject.www.techiteasy.repositories.RemoteControllerRepository;
+import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -36,5 +38,13 @@ public class RemoteControllerService {
         RemoteController remoteController = remoteControllerMapper.remoteControllerInputDtoToEntity(remoteControllerInputDto);
         remoteControllerRepository.save(remoteController);
         return remoteController;
+    }
+
+    public void updateRemoteController(Long id, RemoteControllerUpdateDto remoteControllerUpdateDto) {
+        RemoteController existingRemoteController = remoteControllerRepository.getReferenceById(id);
+        RemoteController updatedRemoteController = remoteControllerMapper.remoteControllerUpdateDtoToEntity(remoteControllerUpdateDto);
+
+        BeanUtils.copyProperties(updatedRemoteController, existingRemoteController, "id");
+        remoteControllerRepository.save(existingRemoteController);
     }
 }

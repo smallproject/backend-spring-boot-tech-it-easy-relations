@@ -3,6 +3,7 @@ package nl.smallproject.www.techiteasy.controllers;
 import jakarta.validation.Valid;
 import nl.smallproject.www.techiteasy.dtos.RemoteControllerInputDto;
 import nl.smallproject.www.techiteasy.dtos.RemoteControllerOutputDto;
+import nl.smallproject.www.techiteasy.dtos.RemoteControllerUpdateDto;
 import nl.smallproject.www.techiteasy.models.RemoteController;
 import nl.smallproject.www.techiteasy.services.RemoteControllerService;
 import org.springframework.http.ResponseEntity;
@@ -37,5 +38,11 @@ public class RemoteControllersController {
                 .toUri();
 
         return ResponseEntity.created(location).build();
+    }
+
+    @RequestMapping(value = "{id}",method = RequestMethod.PUT)
+    public ResponseEntity<Object> updateRemoteController(@PathVariable Long id, @Valid @RequestBody RemoteControllerUpdateDto remoteControllerUpdateDto) {
+        remoteControllerService.updateRemoteController(id, remoteControllerUpdateDto);
+        return ResponseEntity.noContent().build();
     }
 }
