@@ -1,5 +1,6 @@
 package nl.smallproject.www.techiteasy.services;
 
+import nl.smallproject.www.techiteasy.dtos.CiModuleInputDto;
 import nl.smallproject.www.techiteasy.dtos.CiModuleOutputDto;
 import nl.smallproject.www.techiteasy.exceptions.RecordNotFoundException;
 import nl.smallproject.www.techiteasy.mappers.CiModuleMapper;
@@ -42,6 +43,12 @@ public class CiModuleService {
         } else {
             throw new RecordNotFoundException("CiModule not found with this id: " + id);
         }
+    }
+
+    public CiModule createCiModule(CiModuleInputDto ciModuleInputDto) {
+        CiModule ciModule = ciModuleMapper.ciModuleInputDtoToEntity(ciModuleInputDto);
+        ciModuleRepository.save(ciModule);
+        return ciModule;
     }
 
 }
