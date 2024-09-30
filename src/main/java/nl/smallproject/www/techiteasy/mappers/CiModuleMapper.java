@@ -2,6 +2,7 @@ package nl.smallproject.www.techiteasy.mappers;
 
 import nl.smallproject.www.techiteasy.dtos.CiModuleInputDto;
 import nl.smallproject.www.techiteasy.dtos.CiModuleOutputDto;
+import nl.smallproject.www.techiteasy.dtos.CiModuleUpdateDto;
 import nl.smallproject.www.techiteasy.models.CiModule;
 import org.springframework.stereotype.Component;
 
@@ -22,5 +23,13 @@ public class CiModuleMapper {
         ciModuleOutputDto.setType(ciModule.getType());
         ciModuleOutputDto.setPrice(ciModule.getPrice());
         return ciModuleOutputDto;
+    }
+
+    public CiModule ciModuleUpdateDtoToEntity(CiModuleUpdateDto ciModuleUpdateDto) {
+        CiModule ciModule = new CiModule();
+        ciModule.setName(ciModuleUpdateDto.getName());
+        ciModule.setType(ciModuleUpdateDto.getType());
+        ciModule.setPrice(ciModuleUpdateDto.getPrice());
+        return ciModule;
     }
 }

@@ -3,6 +3,7 @@ package nl.smallproject.www.techiteasy.controllers;
 import jakarta.validation.Valid;
 import nl.smallproject.www.techiteasy.dtos.CiModuleInputDto;
 import nl.smallproject.www.techiteasy.dtos.CiModuleOutputDto;
+import nl.smallproject.www.techiteasy.dtos.CiModuleUpdateDto;
 import nl.smallproject.www.techiteasy.services.CiModuleService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -43,5 +44,11 @@ public class CiModulesController {
                 .toUri();
 
         return ResponseEntity.created(location).build();
+    }
+
+    @RequestMapping(value = "{id}", method = RequestMethod.PUT)
+    public ResponseEntity<Object> updateCiModule(@PathVariable Long id, @Valid @RequestBody CiModuleUpdateDto ciModuleUpdateDto) {
+        ciModuleService.updateCiModule(id, ciModuleUpdateDto);
+        return ResponseEntity.noContent().build();
     }
 }
