@@ -27,7 +27,7 @@ public class CiModulesController {
         return ResponseEntity.ok(ciModuleOutputDtos);
     }
 
-    @RequestMapping(value ="/{id}", method = RequestMethod.GET)
+    @RequestMapping(value ="{id}", method = RequestMethod.GET)
     public ResponseEntity<CiModuleOutputDto> getCiModuleById(@PathVariable Long id) {
         CiModuleOutputDto ciModuleOutputDto = ciModuleService.getCiModuleById(id);
         return ResponseEntity.ok(ciModuleOutputDto);
@@ -49,6 +49,12 @@ public class CiModulesController {
     @RequestMapping(value = "{id}", method = RequestMethod.PUT)
     public ResponseEntity<Object> updateCiModule(@PathVariable Long id, @Valid @RequestBody CiModuleUpdateDto ciModuleUpdateDto) {
         ciModuleService.updateCiModule(id, ciModuleUpdateDto);
+        return ResponseEntity.noContent().build();
+    }
+
+    @RequestMapping(value = "{id}")
+    public ResponseEntity<Object> deleteCiModule(@PathVariable Long id) {
+        ciModuleService.deleteCiModule(id);
         return ResponseEntity.noContent().build();
     }
 }

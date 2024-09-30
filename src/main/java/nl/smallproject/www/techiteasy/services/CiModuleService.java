@@ -61,4 +61,8 @@ public class CiModuleService {
         ciModuleRepository.save(existingCiModule);
     }
 
+    public void deleteCiModule(Long id) {
+        ciModuleRepository.deleteById(id);
+    }
+
 }
