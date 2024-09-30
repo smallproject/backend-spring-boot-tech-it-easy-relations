@@ -22,13 +22,13 @@ public class TelevisionsSalesController {
         this.televisionService = televisionService;
     }
 
-    @GetMapping
+    @RequestMapping(method = RequestMethod.GET)
     public ResponseEntity<List<TelevisionSalesOutputDto>> getAllTelevisionSales() {
         List<TelevisionSalesOutputDto> televisionSalesOutputDtos = televisionSalesService.getAllTelevisionSales();
         return ResponseEntity.ok(televisionSalesOutputDtos);
     }
 
-    @GetMapping("{id}")
+    @RequestMapping(value ="{id}", method = RequestMethod.GET)
     public ResponseEntity<TelevisionSalesOutputDto> getTelevisionById(@PathVariable Long id) {
         TelevisionSalesOutputDto televisionSalesOutputDto = televisionSalesService.getTelevisionById(id);
         return ResponseEntity.ok(televisionSalesOutputDto);

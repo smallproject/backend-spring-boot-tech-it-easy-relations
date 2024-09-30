@@ -28,13 +28,13 @@ public class TelevisionsController {
 //        return ResponseEntity.ok(television);
 //    }
 
-    @GetMapping("/{id}")
+    @RequestMapping(value ="/{id}", method = RequestMethod.GET)
     public ResponseEntity<TelevisionOutputDto> getTelevisionById(@PathVariable Long id) {
         TelevisionOutputDto televisionOutputDto = televisionService.getTelevisionById(id);
         return ResponseEntity.ok(televisionOutputDto);
     }
 
-    @PostMapping()
+    @RequestMapping(method = RequestMethod.POST)
     public ResponseEntity<Object> createTelevision(@Valid @RequestBody TelevisionInputDto televisionInputDto) {
 //        moet aanpassen
 //        want die moet je van elke exception schrijven
@@ -73,7 +73,7 @@ public class TelevisionsController {
         return ResponseEntity.noContent().build();
     }
 
-    @GetMapping
+    @RequestMapping(method = RequestMethod.GET)
     public ResponseEntity<List<TelevisionOutputDto>> getAllTelevisions() {
         List<TelevisionOutputDto> televisionOutputDtos = televisionService.getAllTelevision();
         return ResponseEntity.ok(televisionOutputDtos);
