@@ -45,4 +45,10 @@ public class RemoteControllersController {
         remoteControllerService.updateRemoteController(id, remoteControllerUpdateDto);
         return ResponseEntity.noContent().build();
     }
+
+    @RequestMapping(value = "{id}", method = RequestMethod.DELETE)
+    public ResponseEntity<Object> deleteRemoteController(@PathVariable Long id) {
+        remoteControllerService.deleteRemoteController(id);
+        return ResponseEntity.noContent().build();
+    }
 }

@@ -47,4 +47,8 @@ public class RemoteControllerService {
         BeanUtils.copyProperties(updatedRemoteController, existingRemoteController, "id");
         remoteControllerRepository.save(existingRemoteController);
     }
+
+    public void deleteRemoteController(Long id) {
+        remoteControllerRepository.deleteById(id);
+    }
 }
