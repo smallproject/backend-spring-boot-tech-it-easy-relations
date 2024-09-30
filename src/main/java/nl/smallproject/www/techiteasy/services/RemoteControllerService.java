@@ -1,5 +1,6 @@
 package nl.smallproject.www.techiteasy.services;
 
+import nl.smallproject.www.techiteasy.dtos.RemoteControllerInputDto;
 import nl.smallproject.www.techiteasy.dtos.RemoteControllerOutputDto;
 import nl.smallproject.www.techiteasy.exceptions.RecordNotFoundException;
 import nl.smallproject.www.techiteasy.mappers.RemoteControllerMapper;
@@ -29,5 +30,11 @@ public class RemoteControllerService {
         } else {
             throw new RecordNotFoundException("Remote controller not found with this id: " +id);
         }
+    }
+
+    public RemoteController createRemoteController(RemoteControllerInputDto remoteControllerInputDto) {
+        RemoteController remoteController = remoteControllerMapper.remoteControllerInputDtoToEntity(remoteControllerInputDto);
+        remoteControllerRepository.save(remoteController);
+        return remoteController;
     }
 }
