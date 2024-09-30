@@ -27,6 +27,12 @@ public class TelevisionsController {
 //        Television television = televisionService.getTelevisionById(id);
 //        return ResponseEntity.ok(television);
 //    }
+    @RequestMapping(method = RequestMethod.GET)
+    public ResponseEntity<List<TelevisionOutputDto>> getAllTelevisions() {
+
+        List<TelevisionOutputDto> televisionOutputDtos = televisionService.getAllTelevision();
+        return ResponseEntity.ok(televisionOutputDtos);
+    }
 
     @RequestMapping(value ="/{id}", method = RequestMethod.GET)
     public ResponseEntity<TelevisionOutputDto> getTelevisionById(@PathVariable Long id) {
@@ -71,11 +77,5 @@ public class TelevisionsController {
     public ResponseEntity<Object> deleteTelevision(@PathVariable Long id) {
         televisionService.deleteTelevision(id);
         return ResponseEntity.noContent().build();
-    }
-
-    @RequestMapping(method = RequestMethod.GET)
-    public ResponseEntity<List<TelevisionOutputDto>> getAllTelevisions() {
-        List<TelevisionOutputDto> televisionOutputDtos = televisionService.getAllTelevision();
-        return ResponseEntity.ok(televisionOutputDtos);
     }
 }
