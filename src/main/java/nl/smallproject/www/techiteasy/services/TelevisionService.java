@@ -23,9 +23,15 @@ public class TelevisionService {
         this.televisionMapper = televisionMapper;
     }
 
-//    zometeen verwijderen
-    public Television getTelevisionById(long id) {
-        return televisionRepository.getReferenceById(id);
+    public List<TelevisionOutputDto> getAllTelevision() {
+        List<Television> televisions = televisionRepository.findAll();
+        List<TelevisionOutputDto> televisionOutputDtos = new ArrayList<>();
+
+        for (var television: televisions) {
+            televisionOutputDtos.add(televisionMapper.televisionEntityToOutputDto(television));
+        }
+
+        return televisionOutputDtos;
     }
 
     public TelevisionOutputDto getTelevisionById(Long id) {
@@ -40,7 +46,6 @@ public class TelevisionService {
     }
 
     public Television createTelevision(TelevisionInputDto televisionInputDto) {
-//        Option<Television> televisionOptional = new Television(); // unnecesary to be removed
         Television television = televisionMapper.televisionInputDtoToEntity(televisionInputDto);
         televisionRepository.save(television);
         return television;
@@ -56,16 +61,5 @@ public class TelevisionService {
 
     public void deleteTelevision(Long id) {
         televisionRepository.deleteById(id);
-    }
-
-    public List<TelevisionOutputDto> getAllTelevision() {
-        List<Television> televisions = televisionRepository.findAll();
-        List<TelevisionOutputDto> televisionOutputDtos = new ArrayList<>();
-
-        for (var television: televisions) {
-            televisionOutputDtos.add(televisionMapper.televisionEntityToOutputDto(television));
-        }
-
-        return televisionOutputDtos;
     }
 }
