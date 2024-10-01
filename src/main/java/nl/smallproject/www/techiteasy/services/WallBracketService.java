@@ -1,5 +1,6 @@
 package nl.smallproject.www.techiteasy.services;
 
+import nl.smallproject.www.techiteasy.dtos.WallBracketInputDto;
 import nl.smallproject.www.techiteasy.dtos.WallBracketOutputDto;
 import nl.smallproject.www.techiteasy.exceptions.RecordNotFoundException;
 import nl.smallproject.www.techiteasy.mappers.WallBracketMapper;
@@ -29,5 +30,11 @@ public class WallBracketService {
         } else {
             throw new RecordNotFoundException("Wall bracket is not found with this id: " + id);
         }
+    }
+
+    public WallBracket createWallBracket(WallBracketInputDto wallBracketInputDto) {
+        WallBracket wallBracket = wallBracketMapper.wallBracketInputDtoToEntity(wallBracketInputDto);
+        wallBracketRepository.save(wallBracket);
+        return wallBracket;
     }
 }
