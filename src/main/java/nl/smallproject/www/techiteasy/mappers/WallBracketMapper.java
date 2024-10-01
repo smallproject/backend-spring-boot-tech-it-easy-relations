@@ -2,6 +2,7 @@ package nl.smallproject.www.techiteasy.mappers;
 
 import nl.smallproject.www.techiteasy.dtos.WallBracketInputDto;
 import nl.smallproject.www.techiteasy.dtos.WallBracketOutputDto;
+import nl.smallproject.www.techiteasy.dtos.WallBracketUpdateDto;
 import nl.smallproject.www.techiteasy.models.WallBracket;
 import org.springframework.stereotype.Component;
 
@@ -25,5 +26,14 @@ public class WallBracketMapper {
         wallBracketOutputDto.setName(wallBracket.getName());
         wallBracketOutputDto.setPrice(wallBracket.getPrice());
         return wallBracketOutputDto;
+    }
+
+    public WallBracket wallBracketUpdateDtoToEntity(WallBracketUpdateDto wallBracketUpdateDto) {
+        WallBracket wallBracket = new WallBracket();
+        wallBracket.setSize(wallBracketUpdateDto.getSize());
+        wallBracket.setAdjustable(wallBracketUpdateDto.getAdjustable());
+        wallBracket.setName(wallBracketUpdateDto.getName());
+        wallBracket.setPrice(wallBracketUpdateDto.getPrice());
+        return wallBracket;
     }
 }
