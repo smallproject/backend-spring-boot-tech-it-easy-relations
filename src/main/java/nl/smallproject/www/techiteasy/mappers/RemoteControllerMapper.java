@@ -8,6 +8,17 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class RemoteControllerMapper {
+    public RemoteController remoteControllerInputDtoToEntity(RemoteControllerInputDto remoteControllerInputDto) {
+        RemoteController remoteController = new RemoteController();
+        remoteController.setCompatibleWith(remoteControllerInputDto.getCompatibleWith());
+        remoteController.setBatteryType(remoteControllerInputDto.getBatteryType());
+        remoteController.setName(remoteControllerInputDto.getName());
+        remoteController.setBrand(remoteControllerInputDto.getBrand());
+        remoteController.setPrice(remoteControllerInputDto.getPrice());
+        remoteController.setOriginalStock(remoteControllerInputDto.getOriginalStock());
+        return remoteController;
+    }
+
     public RemoteControllerOutputDto remoteControllerEntityToOutputDto(RemoteController remoteController) {
         RemoteControllerOutputDto remoteControllerOutputDto = new RemoteControllerOutputDto();
         remoteControllerOutputDto.setId(remoteController.getId());
@@ -18,17 +29,6 @@ public class RemoteControllerMapper {
         remoteControllerOutputDto.setPrice(remoteController.getPrice());
         remoteControllerOutputDto.setOriginalStock(remoteController.getOriginalStock());
         return remoteControllerOutputDto;
-    }
-
-    public RemoteController remoteControllerInputDtoToEntity(RemoteControllerInputDto remoteControllerInputDto) {
-        RemoteController remoteController = new RemoteController();
-        remoteController.setCompatibleWith(remoteControllerInputDto.getCompatibleWith());
-        remoteController.setBatteryType(remoteControllerInputDto.getBatteryType());
-        remoteController.setName(remoteControllerInputDto.getName());
-        remoteController.setBrand(remoteControllerInputDto.getBrand());
-        remoteController.setPrice(remoteControllerInputDto.getPrice());
-        remoteController.setOriginalStock(remoteControllerInputDto.getOriginalStock());
-        return remoteController;
     }
 
     public RemoteController remoteControllerUpdateDtoToEntity(RemoteControllerUpdateDto remoteControllerUpdateDto) {
