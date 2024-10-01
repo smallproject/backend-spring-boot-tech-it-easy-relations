@@ -15,11 +15,9 @@ import java.util.List;
 @RequestMapping("api/sales/television")
 public class TelevisionsSalesController {
     private final TelevisionSalesService televisionSalesService;
-    private final TelevisionService televisionService;
 
-    public TelevisionsSalesController(TelevisionSalesService televisionSalesService, TelevisionService televisionService) {
+    public TelevisionsSalesController(TelevisionSalesService televisionSalesService) {
         this.televisionSalesService = televisionSalesService;
-        this.televisionService = televisionService;
     }
 
     @RequestMapping(method = RequestMethod.GET)
