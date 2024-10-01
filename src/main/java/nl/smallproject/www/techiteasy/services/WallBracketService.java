@@ -2,10 +2,12 @@ package nl.smallproject.www.techiteasy.services;
 
 import nl.smallproject.www.techiteasy.dtos.WallBracketInputDto;
 import nl.smallproject.www.techiteasy.dtos.WallBracketOutputDto;
+import nl.smallproject.www.techiteasy.dtos.WallBracketUpdateDto;
 import nl.smallproject.www.techiteasy.exceptions.RecordNotFoundException;
 import nl.smallproject.www.techiteasy.mappers.WallBracketMapper;
 import nl.smallproject.www.techiteasy.models.WallBracket;
 import nl.smallproject.www.techiteasy.repositories.WallBracketRepository;
+import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -36,5 +38,13 @@ public class WallBracketService {
         WallBracket wallBracket = wallBracketMapper.wallBracketInputDtoToEntity(wallBracketInputDto);
         wallBracketRepository.save(wallBracket);
         return wallBracket;
+    }
+
+    public void updateWallBracket(Long id, WallBracketUpdateDto wallBracketUpdateDto) {
+        WallBracket existingWallBracket = wallBracketRepository.getReferenceById(id);
+        WallBracket updatedWallBracket = wallBracketMapper.wallBracketUpdateDtoToEntity(wallBracketUpdateDto);
+
+        BeanUtils.copyProperties(updatedWallBracket, existingWallBracket, "id");
+        wallBracketRepository.save(existingWallBracket);
     }
 }

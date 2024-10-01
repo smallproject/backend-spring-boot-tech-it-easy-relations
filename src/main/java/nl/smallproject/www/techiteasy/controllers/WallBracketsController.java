@@ -3,8 +3,10 @@ package nl.smallproject.www.techiteasy.controllers;
 import jakarta.validation.Valid;
 import nl.smallproject.www.techiteasy.dtos.WallBracketInputDto;
 import nl.smallproject.www.techiteasy.dtos.WallBracketOutputDto;
+import nl.smallproject.www.techiteasy.dtos.WallBracketUpdateDto;
 import nl.smallproject.www.techiteasy.models.WallBracket;
 import nl.smallproject.www.techiteasy.services.WallBracketService;
+import org.apache.coyote.Response;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
@@ -37,5 +39,11 @@ public class WallBracketsController {
                 .toUri();
 
         return ResponseEntity.created(location).build();
+    }
+
+    @RequestMapping(value = "{id}", method = RequestMethod.PUT)
+    public ResponseEntity<Object> updateWallBracket(@PathVariable Long id, @Valid @RequestBody WallBracketUpdateDto wallBracketUpdateDto) {
+        wallBracketService.updateWallBracket(id, wallBracketUpdateDto);
+        return ResponseEntity.noContent().build();
     }
 }
