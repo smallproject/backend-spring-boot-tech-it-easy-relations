@@ -3,7 +3,7 @@ package nl.smallproject.www.techiteasy.models;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "wallbracket")
+@Table(name = "wallbrackets")
 public class WallBracket {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,6 +21,13 @@ public class WallBracket {
     @Column(name = "price")
     private double price;
 
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
 
     public String getSize() {
         return size;
@@ -30,7 +37,7 @@ public class WallBracket {
         this.size = size;
     }
 
-    public boolean isAdjustable() {
+    public boolean getAdjustable() {
         return adjustable;
     }
 
