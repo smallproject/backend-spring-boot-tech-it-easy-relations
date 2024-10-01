@@ -10,6 +10,10 @@ public class WallBracketMapper {
 
     public WallBracket wallBracketInputDtoToEntity(WallBracketInputDto wallBracketInputDto) {
         WallBracket wallBracket = new WallBracket();
+        wallBracket.setSize(wallBracketInputDto.getSize());
+        wallBracket.setAdjustable(wallBracketInputDto.getAdjustable());
+        wallBracket.setName(wallBracketInputDto.getName());
+        wallBracket.setPrice(wallBracketInputDto.getPrice());
         return wallBracket;
     }
 
