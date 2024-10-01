@@ -2,6 +2,7 @@ package nl.smallproject.www.techiteasy.dtos;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.PositiveOrZero;
 import jakarta.validation.constraints.Size;
 
 public class TelevisionInputDto {
@@ -14,12 +15,16 @@ public class TelevisionInputDto {
     @Size(min = 3, max = 255, message = "{television.brand.size}")
     private String brand;
 
+    @PositiveOrZero(message = "{television.price.positiveornotzero}")
     private double price;
 
+    @PositiveOrZero(message = "{television.currentstock.positiveornotzero}")
     private int currentStock;
 
+    @PositiveOrZero(message = "{television.height.positiveornotzero}")
     private double height;
 
+    @PositiveOrZero(message = "{television.width.positiveornotzero}")
     private double width;
 
     @NotBlank(message = "{television.screenquality.notblank}")
@@ -58,35 +63,39 @@ public class TelevisionInputDto {
         this.brand = brand;
     }
 
+    @PositiveOrZero(message = "{television.price.positiveornotzero}")
     public double getPrice() {
         return price;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(@PositiveOrZero(message = "{television.price.positiveornotzero}") double price) {
         this.price = price;
     }
 
+    @PositiveOrZero(message = "{television.currentstock.positiveornotzero}")
     public int getCurrentStock() {
         return currentStock;
     }
 
-    public void setCurrentStock(int currentStock) {
+    public void setCurrentStock(@PositiveOrZero(message = "{television.currentstock.positiveornotzero}") int currentStock) {
         this.currentStock = currentStock;
     }
 
+    @PositiveOrZero(message = "{television.height.positiveornotzero}")
     public double getHeight() {
         return height;
     }
 
-    public void setHeight(double height) {
+    public void setHeight(@PositiveOrZero(message = "{television.height.positiveornotzero}") double height) {
         this.height = height;
     }
 
+    @PositiveOrZero(message = "{television.width.positiveornotzero}")
     public double getWidth() {
         return width;
     }
 
-    public void setWidth(double width) {
+    public void setWidth(@PositiveOrZero(message = "{television.width.positiveornotzero}") double width) {
         this.width = width;
     }
 
