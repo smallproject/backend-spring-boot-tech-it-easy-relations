@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1/wallbracket")
@@ -20,6 +21,12 @@ public class WallBracketsController {
 
     public WallBracketsController(WallBracketService wallBracketService) {
         this.wallBracketService = wallBracketService;
+    }
+
+    @RequestMapping(method = RequestMethod.GET)
+    public ResponseEntity<List<WallBracketOutputDto>> getAllWallBrackets() {
+        List<WallBracketOutputDto> allWallBrackets = wallBracketService.getAllWallBrackets();
+        return ResponseEntity.ok(allWallBrackets);
     }
 
     @RequestMapping(value = "{id}", method = RequestMethod.GET)

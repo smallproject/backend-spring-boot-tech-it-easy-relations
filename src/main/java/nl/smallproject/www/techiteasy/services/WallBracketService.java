@@ -10,6 +10,8 @@ import nl.smallproject.www.techiteasy.repositories.WallBracketRepository;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -20,6 +22,17 @@ public class WallBracketService {
     public WallBracketService(WallBracketRepository wallBracketRepository, WallBracketMapper wallBracketMapper) {
         this.wallBracketRepository = wallBracketRepository;
         this.wallBracketMapper = wallBracketMapper;
+    }
+
+    public List<WallBracketOutputDto> getAllWallBrackets() {
+        List<WallBracket> wallBrackets = wallBracketRepository.findAll();
+        List<WallBracketOutputDto> wallBracketOutputDtos = new ArrayList<>();
+
+        for (var wallBracket : wallBrackets) {
+            wallBracketOutputDtos.add(wallBracketMapper.wallBracketEntityToOutputDto(wallBracket));
+        }
+
+        return wallBracketOutputDtos;
     }
 
     public WallBracketOutputDto getWallBracketById(Long id) {
