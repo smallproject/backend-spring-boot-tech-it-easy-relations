@@ -47,4 +47,8 @@ public class WallBracketService {
         BeanUtils.copyProperties(updatedWallBracket, existingWallBracket, "id");
         wallBracketRepository.save(existingWallBracket);
     }
+
+    public void deleteWallBracket(Long id) {
+        wallBracketRepository.deleteById(id);
+    }
 }
