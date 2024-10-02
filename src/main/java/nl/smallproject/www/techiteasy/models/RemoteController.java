@@ -27,6 +27,9 @@ public class RemoteController {
     @Column(name = "originalstock")
     private int originalStock;
 
+    @OneToOne(mappedBy = "remoteController")
+    private Television television;
+
     public long getId() {
         return id;
     }
@@ -82,4 +85,13 @@ public class RemoteController {
     public void setOriginalStock(int originalStock) {
         this.originalStock = originalStock;
     }
+
+    public Television getTelevision() {
+        return television;
+    }
+
+    public void setTelevision(Television television) {
+        this.television = television;
+    }
+
 }

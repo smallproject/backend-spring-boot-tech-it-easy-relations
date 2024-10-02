@@ -1,9 +1,6 @@
 package nl.smallproject.www.techiteasy.models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 import java.util.Date;
 
@@ -29,6 +26,11 @@ public class Television {
     private Boolean smartTv;
     private Boolean voiceControl;
     private Boolean hdr;
+
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JoinColumn(name = "remotecontroller", referencedColumnName = "id", nullable = true)
+    private RemoteController remoteController;
+
 
     public String getName() {
         return name;
@@ -156,5 +158,13 @@ public class Television {
 
     public void setHdr(Boolean hdr) {
         this.hdr = hdr;
+    }
+
+    public RemoteController getRemoteController() {
+        return remoteController;
+    }
+
+    public void setRemoteController(RemoteController remoteController) {
+        this.remoteController = remoteController;
     }
 }
