@@ -1,4 +1,4 @@
-package nl.smallproject.www.techiteasy.dtos;
+package nl.smallproject.www.techiteasy.dtos.WallBracket;
 
 public class WallBracketOutputDto {
     private long id;

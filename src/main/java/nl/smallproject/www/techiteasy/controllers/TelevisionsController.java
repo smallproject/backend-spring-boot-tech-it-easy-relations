@@ -1,9 +1,10 @@
 package nl.smallproject.www.techiteasy.controllers;
 
 import jakarta.validation.Valid;
-import nl.smallproject.www.techiteasy.dtos.TelevisionInputDto;
-import nl.smallproject.www.techiteasy.dtos.TelevisionOutputDto;
-import nl.smallproject.www.techiteasy.dtos.TelevisionUpdateDto;
+import nl.smallproject.www.techiteasy.dtos.RemoteController.RemoteControllerInputDto;
+import nl.smallproject.www.techiteasy.dtos.Television.TelevisionInputDto;
+import nl.smallproject.www.techiteasy.dtos.Television.TelevisionOutputDto;
+import nl.smallproject.www.techiteasy.dtos.Television.TelevisionUpdateDto;
 import nl.smallproject.www.techiteasy.services.TelevisionService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

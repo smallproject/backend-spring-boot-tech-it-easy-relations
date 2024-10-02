@@ -1,8 +1,8 @@
 package nl.smallproject.www.techiteasy.services;
 
-import nl.smallproject.www.techiteasy.dtos.CiModuleInputDto;
-import nl.smallproject.www.techiteasy.dtos.CiModuleOutputDto;
-import nl.smallproject.www.techiteasy.dtos.CiModuleUpdateDto;
+import nl.smallproject.www.techiteasy.dtos.CiModule.CiModuleInputDto;
+import nl.smallproject.www.techiteasy.dtos.CiModule.CiModuleOutputDto;
+import nl.smallproject.www.techiteasy.dtos.CiModule.CiModuleUpdateDto;
 import nl.smallproject.www.techiteasy.exceptions.RecordNotFoundException;
 import nl.smallproject.www.techiteasy.mappers.CiModuleMapper;
 import nl.smallproject.www.techiteasy.models.CiModule;

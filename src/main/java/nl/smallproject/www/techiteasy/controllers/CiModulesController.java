@@ -1,9 +1,9 @@
 package nl.smallproject.www.techiteasy.controllers;
 
 import jakarta.validation.Valid;
-import nl.smallproject.www.techiteasy.dtos.CiModuleInputDto;
-import nl.smallproject.www.techiteasy.dtos.CiModuleOutputDto;
-import nl.smallproject.www.techiteasy.dtos.CiModuleUpdateDto;
+import nl.smallproject.www.techiteasy.dtos.CiModule.CiModuleInputDto;
+import nl.smallproject.www.techiteasy.dtos.CiModule.CiModuleOutputDto;
+import nl.smallproject.www.techiteasy.dtos.CiModule.CiModuleUpdateDto;
 import nl.smallproject.www.techiteasy.services.CiModuleService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

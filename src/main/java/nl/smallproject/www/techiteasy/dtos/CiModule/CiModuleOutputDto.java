@@ -1,4 +1,4 @@
-package nl.smallproject.www.techiteasy.dtos;
+package nl.smallproject.www.techiteasy.dtos.CiModule;
 
 public class CiModuleOutputDto {
     private long id;

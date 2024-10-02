@@ -1,13 +1,19 @@
 package nl.smallproject.www.techiteasy.mappers;
 
 import nl.smallproject.www.techiteasy.models.Television;
-import nl.smallproject.www.techiteasy.dtos.TelevisionInputDto;
-import nl.smallproject.www.techiteasy.dtos.TelevisionOutputDto;
-import nl.smallproject.www.techiteasy.dtos.TelevisionUpdateDto;
+import nl.smallproject.www.techiteasy.dtos.Television.TelevisionInputDto;
+import nl.smallproject.www.techiteasy.dtos.Television.TelevisionOutputDto;
+import nl.smallproject.www.techiteasy.dtos.Television.TelevisionUpdateDto;
 import org.springframework.stereotype.Component;
 
 @Component
 public class TelevisionMapper {
+
+    private final RemoteControllerMapper remoteControllerMapper;
+
+    public TelevisionMapper(RemoteControllerMapper remoteControllerMapper) {
+        this.remoteControllerMapper = remoteControllerMapper;
+    }
 
     public Television televisionInputDtoToEntity(TelevisionInputDto televisionInputDto) {
         Television television = new Television();
@@ -42,6 +48,7 @@ public class TelevisionMapper {
         televisionOutputDto.setSmartTv(television.getSmartTv());
         televisionOutputDto.setVoiceControl(television.getVoiceControl());
         televisionOutputDto.setHdr(television.getHdr());
+        televisionOutputDto.setRemoteControllerOutputDto(remoteControllerMapper.remoteControllerEntityToOutputDto(television.getRemoteController()));
 
         return televisionOutputDto;
     }

@@ -1,8 +1,8 @@
 package nl.smallproject.www.techiteasy.mappers;
 
-import nl.smallproject.www.techiteasy.dtos.WallBracketInputDto;
-import nl.smallproject.www.techiteasy.dtos.WallBracketOutputDto;
-import nl.smallproject.www.techiteasy.dtos.WallBracketUpdateDto;
+import nl.smallproject.www.techiteasy.dtos.WallBracket.WallBracketInputDto;
+import nl.smallproject.www.techiteasy.dtos.WallBracket.WallBracketOutputDto;
+import nl.smallproject.www.techiteasy.dtos.WallBracket.WallBracketUpdateDto;
 import nl.smallproject.www.techiteasy.models.WallBracket;
 import org.springframework.stereotype.Component;
 

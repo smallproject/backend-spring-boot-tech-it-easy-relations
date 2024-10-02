@@ -1,11 +1,12 @@
-package nl.smallproject.www.techiteasy.dtos;
+package nl.smallproject.www.techiteasy.dtos.WallBracket;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.PositiveOrZero;
 import jakarta.validation.constraints.Size;
 
-public class WallBracketUpdateDto {
+public class WallBracketInputDto {
+
 
     @NotBlank(message = "{wallBracket.size.notblank}")
     @Size(min = 3, max = 255, message = "{wallBracket.size.size}")

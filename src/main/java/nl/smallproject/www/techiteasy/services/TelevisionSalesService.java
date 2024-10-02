@@ -1,12 +1,10 @@
 package nl.smallproject.www.techiteasy.services;
 
-import nl.smallproject.www.techiteasy.dtos.TelevisionOutputDto;
-import nl.smallproject.www.techiteasy.dtos.TelevisionSalesOutputDto;
-import nl.smallproject.www.techiteasy.dtos.TelevisionSalesUpdateDto;
+import nl.smallproject.www.techiteasy.dtos.Television.TelevisionSalesOutputDto;
+import nl.smallproject.www.techiteasy.dtos.Television.TelevisionSalesUpdateDto;
 import nl.smallproject.www.techiteasy.mappers.TelevisionSalesMapper;
 import nl.smallproject.www.techiteasy.models.Television;
 import nl.smallproject.www.techiteasy.repositories.TelevisionRepository;
-import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;

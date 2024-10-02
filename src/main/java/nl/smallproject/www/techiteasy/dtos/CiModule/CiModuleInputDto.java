@@ -1,10 +1,10 @@
-package nl.smallproject.www.techiteasy.dtos;
+package nl.smallproject.www.techiteasy.dtos.CiModule;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.PositiveOrZero;
 import jakarta.validation.constraints.Size;
 
-public class CiModuleUpdateDto {
+public class CiModuleInputDto {
 
     @NotBlank(message = "{cimodule.name.notblank}")
     @Size(min = 3, max = 255, message = "{cimodule.name.size}")

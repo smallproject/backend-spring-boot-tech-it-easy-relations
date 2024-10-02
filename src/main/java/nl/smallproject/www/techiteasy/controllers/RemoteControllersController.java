@@ -1,9 +1,9 @@
 package nl.smallproject.www.techiteasy.controllers;
 
 import jakarta.validation.Valid;
-import nl.smallproject.www.techiteasy.dtos.RemoteControllerInputDto;
-import nl.smallproject.www.techiteasy.dtos.RemoteControllerOutputDto;
-import nl.smallproject.www.techiteasy.dtos.RemoteControllerUpdateDto;
+import nl.smallproject.www.techiteasy.dtos.RemoteController.RemoteControllerInputDto;
+import nl.smallproject.www.techiteasy.dtos.RemoteController.RemoteControllerOutputDto;
+import nl.smallproject.www.techiteasy.dtos.RemoteController.RemoteControllerUpdateDto;
 import nl.smallproject.www.techiteasy.models.RemoteController;
 import nl.smallproject.www.techiteasy.services.RemoteControllerService;
 import org.springframework.http.ResponseEntity;

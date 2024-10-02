@@ -1,11 +1,9 @@
 package nl.smallproject.www.techiteasy.controllers;
 
 import jakarta.validation.Valid;
-import nl.smallproject.www.techiteasy.dtos.TelevisionSalesOutputDto;
-import nl.smallproject.www.techiteasy.dtos.TelevisionSalesUpdateDto;
+import nl.smallproject.www.techiteasy.dtos.Television.TelevisionSalesOutputDto;
+import nl.smallproject.www.techiteasy.dtos.Television.TelevisionSalesUpdateDto;
 import nl.smallproject.www.techiteasy.services.TelevisionSalesService;
-import nl.smallproject.www.techiteasy.services.TelevisionService;
-import org.apache.coyote.Response;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 

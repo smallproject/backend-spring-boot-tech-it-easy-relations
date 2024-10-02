@@ -1,13 +1,14 @@
 package nl.smallproject.www.techiteasy.mappers;
 
-import nl.smallproject.www.techiteasy.dtos.RemoteControllerInputDto;
-import nl.smallproject.www.techiteasy.dtos.RemoteControllerOutputDto;
-import nl.smallproject.www.techiteasy.dtos.RemoteControllerUpdateDto;
+import nl.smallproject.www.techiteasy.dtos.RemoteController.RemoteControllerInputDto;
+import nl.smallproject.www.techiteasy.dtos.RemoteController.RemoteControllerOutputDto;
+import nl.smallproject.www.techiteasy.dtos.RemoteController.RemoteControllerUpdateDto;
 import nl.smallproject.www.techiteasy.models.RemoteController;
 import org.springframework.stereotype.Component;
 
 @Component
 public class RemoteControllerMapper {
+
     public RemoteController remoteControllerInputDtoToEntity(RemoteControllerInputDto remoteControllerInputDto) {
         RemoteController remoteController = new RemoteController();
         remoteController.setCompatibleWith(remoteControllerInputDto.getCompatibleWith());
@@ -28,6 +29,7 @@ public class RemoteControllerMapper {
         remoteControllerOutputDto.setBrand(remoteController.getBrand());
         remoteControllerOutputDto.setPrice(remoteController.getPrice());
         remoteControllerOutputDto.setOriginalStock(remoteController.getOriginalStock());
+//        remoteControllerOutputDto.setTelevisionOutputDto(televisionMapper.televisionEntityToOutputDto(remoteController.getTelevision()));
         return remoteControllerOutputDto;
     }
 

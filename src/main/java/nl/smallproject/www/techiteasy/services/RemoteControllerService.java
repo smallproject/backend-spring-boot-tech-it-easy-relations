@@ -1,8 +1,8 @@
 package nl.smallproject.www.techiteasy.services;
 
-import nl.smallproject.www.techiteasy.dtos.RemoteControllerInputDto;
-import nl.smallproject.www.techiteasy.dtos.RemoteControllerOutputDto;
-import nl.smallproject.www.techiteasy.dtos.RemoteControllerUpdateDto;
+import nl.smallproject.www.techiteasy.dtos.RemoteController.RemoteControllerInputDto;
+import nl.smallproject.www.techiteasy.dtos.RemoteController.RemoteControllerOutputDto;
+import nl.smallproject.www.techiteasy.dtos.RemoteController.RemoteControllerUpdateDto;
 import nl.smallproject.www.techiteasy.exceptions.RecordNotFoundException;
 import nl.smallproject.www.techiteasy.mappers.RemoteControllerMapper;
 import nl.smallproject.www.techiteasy.models.RemoteController;

@@ -1,12 +1,11 @@
 package nl.smallproject.www.techiteasy.controllers;
 
 import jakarta.validation.Valid;
-import nl.smallproject.www.techiteasy.dtos.WallBracketInputDto;
-import nl.smallproject.www.techiteasy.dtos.WallBracketOutputDto;
-import nl.smallproject.www.techiteasy.dtos.WallBracketUpdateDto;
+import nl.smallproject.www.techiteasy.dtos.WallBracket.WallBracketInputDto;
+import nl.smallproject.www.techiteasy.dtos.WallBracket.WallBracketOutputDto;
+import nl.smallproject.www.techiteasy.dtos.WallBracket.WallBracketUpdateDto;
 import nl.smallproject.www.techiteasy.models.WallBracket;
 import nl.smallproject.www.techiteasy.services.WallBracketService;
-import org.apache.coyote.Response;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;

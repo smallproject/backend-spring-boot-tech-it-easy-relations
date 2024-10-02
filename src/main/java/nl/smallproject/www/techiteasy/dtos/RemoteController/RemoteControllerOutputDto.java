@@ -1,4 +1,6 @@
-package nl.smallproject.www.techiteasy.dtos;
+package nl.smallproject.www.techiteasy.dtos.RemoteController;
+
+import nl.smallproject.www.techiteasy.dtos.Television.TelevisionOutputDto;
 
 public class RemoteControllerOutputDto {
     private long id;
@@ -8,6 +10,7 @@ public class RemoteControllerOutputDto {
     private String brand;
     private double price;
     private int originalStock;
+    private TelevisionOutputDto televisionOutputDto;
 
     public void setOriginalStock(int originalStock) {
         this.originalStock = originalStock;
@@ -63,5 +66,13 @@ public class RemoteControllerOutputDto {
 
     public int getOriginalStock() {
         return originalStock;
+    }
+
+    public TelevisionOutputDto getTelevisionOutputDto() {
+        return televisionOutputDto;
+    }
+
+    public void setTelevisionOutputDto(TelevisionOutputDto televisionOutputDto) {
+        this.televisionOutputDto = televisionOutputDto;
     }
 }

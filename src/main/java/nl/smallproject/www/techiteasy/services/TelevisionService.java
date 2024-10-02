@@ -1,10 +1,13 @@
 package nl.smallproject.www.techiteasy.services;
 
+import nl.smallproject.www.techiteasy.dtos.RemoteController.RemoteControllerInputDto;
+import nl.smallproject.www.techiteasy.exceptions.RecordNotFoundException;
+import nl.smallproject.www.techiteasy.mappers.RemoteControllerMapper;
 import nl.smallproject.www.techiteasy.mappers.TelevisionMapper;
 import nl.smallproject.www.techiteasy.models.Television;
-import nl.smallproject.www.techiteasy.dtos.TelevisionInputDto;
-import nl.smallproject.www.techiteasy.dtos.TelevisionOutputDto;
-import nl.smallproject.www.techiteasy.dtos.TelevisionUpdateDto;
+import nl.smallproject.www.techiteasy.dtos.Television.TelevisionInputDto;
+import nl.smallproject.www.techiteasy.dtos.Television.TelevisionOutputDto;
+import nl.smallproject.www.techiteasy.dtos.Television.TelevisionUpdateDto;
 import nl.smallproject.www.techiteasy.repositories.TelevisionRepository;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;

@@ -1,4 +1,6 @@
-package nl.smallproject.www.techiteasy.dtos;
+package nl.smallproject.www.techiteasy.dtos.Television;
+
+import nl.smallproject.www.techiteasy.dtos.RemoteController.RemoteControllerOutputDto;
 
 public class TelevisionOutputDto {
 
@@ -27,6 +29,16 @@ public class TelevisionOutputDto {
     private Boolean voiceControl;
 
     private Boolean hdr;
+
+    private RemoteControllerOutputDto remoteControllerOutputDto;
+
+    public RemoteControllerOutputDto getRemoteControllerOutputDto() {
+        return remoteControllerOutputDto;
+    }
+
+    public void setRemoteControllerOutputDto(RemoteControllerOutputDto remoteControllerOutputDto) {
+        this.remoteControllerOutputDto = remoteControllerOutputDto;
+    }
 
     public String getName() {
         return name;
