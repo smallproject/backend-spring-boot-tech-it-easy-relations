@@ -65,4 +65,27 @@ public class TelevisionService {
     public void deleteTelevision(Long id) {
         televisionRepository.deleteById(id);
     }
+
+    public void assignRemoteControllerToTelevision(Long televisionId, Long remoteControllerId) {
+        Optional<Television> televisionOptional = Optional.ofNullable(televisionRepository.findById(televisionId)
+                .orElseThrow(() -> new RecordNotFoundException("Television not found with this id: " + televisionId)));
+
+        Optional<RemoteController> remoteControllerOptional = Optional.ofNullable(remoteControllerRepository.findById(remoteControllerId)
+                .orElseThrow(() -> new RecordNotFoundException("Remote controller not found with this id: " + remoteControllerId)));
+
+        if (televisionOptional.isPresent()) {
+            Television existingTelevision = televisionOptional.get();
+
+            if (remoteControllerOptional.isPresent()){
+                RemoteController existingRemoteController = remoteControllerOptional.get();
+                existingTelevision.setRemoteController(existingRemoteController);
+                existingRemoteController.setTelevision(existingTelevision); //Bi-directional
+            }
+
+            //updateTelevision(id, televisionMapper.televisionUpdateDtoToEntity((TelevisionUpdateDto)existingTelevision));
+            televisionRepository.save(existingTelevision);
+        } else {
+            throw new RecordNotFoundException("Television not found with this id: " +televisionId);
+        }
+    }
 }

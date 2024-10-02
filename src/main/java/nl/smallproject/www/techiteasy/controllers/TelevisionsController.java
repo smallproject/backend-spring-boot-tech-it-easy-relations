@@ -1,7 +1,6 @@
 package nl.smallproject.www.techiteasy.controllers;
 
 import jakarta.validation.Valid;
-import nl.smallproject.www.techiteasy.dtos.RemoteController.RemoteControllerInputDto;
 import nl.smallproject.www.techiteasy.dtos.Television.TelevisionInputDto;
 import nl.smallproject.www.techiteasy.dtos.Television.TelevisionOutputDto;
 import nl.smallproject.www.techiteasy.dtos.Television.TelevisionUpdateDto;
@@ -77,6 +76,12 @@ public class TelevisionsController {
     @RequestMapping(value = "{id}", method = RequestMethod.DELETE)
     public ResponseEntity<Object> deleteTelevision(@PathVariable Long id) {
         televisionService.deleteTelevision(id);
+        return ResponseEntity.noContent().build();
+    }
+
+    @RequestMapping(value = "{televisionId}/remotecontroller/{remoteControllerId}", method = RequestMethod.PUT)
+    public ResponseEntity<Object> assignRemoteControllerToTelevision(@PathVariable Long televisionId, @PathVariable Long remoteControllerId) {
+        televisionService.assignRemoteControllerToTelevision(televisionId, remoteControllerId);
         return ResponseEntity.noContent().build();
     }
 }
