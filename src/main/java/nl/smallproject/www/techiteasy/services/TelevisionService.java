@@ -10,9 +10,11 @@ import nl.smallproject.www.techiteasy.models.Television;
 import nl.smallproject.www.techiteasy.dtos.Television.TelevisionInputDto;
 import nl.smallproject.www.techiteasy.dtos.Television.TelevisionOutputDto;
 import nl.smallproject.www.techiteasy.dtos.Television.TelevisionUpdateDto;
+import nl.smallproject.www.techiteasy.models.WallBracket;
 import nl.smallproject.www.techiteasy.repositories.CiModuleRepository;
 import nl.smallproject.www.techiteasy.repositories.RemoteControllerRepository;
 import nl.smallproject.www.techiteasy.repositories.TelevisionRepository;
+import nl.smallproject.www.techiteasy.repositories.WallBracketRepository;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
@@ -27,13 +29,15 @@ public class TelevisionService {
     private final RemoteControllerService remoteControllerService;
     private final RemoteControllerRepository remoteControllerRepository;
     private final CiModuleRepository ciModuleRepository;
+    private final WallBracketRepository wallBracketRepository;
 
-    public TelevisionService(TelevisionRepository televisionRepository, TelevisionMapper televisionMapper, RemoteControllerMapper remoteControllerMapper, RemoteControllerService remoteControllerService, RemoteControllerRepository remoteControllerRepository, CiModuleRepository ciModuleRepository) {
+    public TelevisionService(TelevisionRepository televisionRepository, TelevisionMapper televisionMapper, RemoteControllerMapper remoteControllerMapper, RemoteControllerService remoteControllerService, RemoteControllerRepository remoteControllerRepository, CiModuleRepository ciModuleRepository, WallBracketRepository wallBracketRepository) {
         this.televisionRepository = televisionRepository;
         this.televisionMapper = televisionMapper;
         this.remoteControllerService = remoteControllerService;
         this.remoteControllerRepository = remoteControllerRepository;
         this.ciModuleRepository = ciModuleRepository;
+        this.wallBracketRepository = wallBracketRepository;
     }
 
     public List<TelevisionOutputDto> getAllTelevision() {
@@ -128,6 +132,34 @@ public class TelevisionService {
             televisionRepository.save(existingTelevision);
         } else {
             throw new RecordNotFoundException("Television not found with this id: " + televisionId);
+        }
+    }
+
+    public void assignWallBracketToTelevision(Long televisionId, Long wallBracketId) {
+        Optional<Television> televisonOptional = Optional.ofNullable(televisionRepository.findById(televisionId)
+                .orElseThrow(() -> new RecordNotFoundException("Television not found with this id: " + televisionId)));
+
+        Optional<WallBracket> wallBracketOptional = Optional.ofNullable(wallBracketRepository.findById(wallBracketId)
+                .orElseThrow(() -> new RecordNotFoundException("Wall Bracket not found with this id: " + wallBracketId)));
+
+        if (televisonOptional.isPresent()) {
+            Television existingTelevision = televisonOptional.get();
+
+            if (wallBracketOptional.isPresent()) {
+                WallBracket existingWallBracket = wallBracketOptional.get();
+                List<WallBracket> wallBrackets = new ArrayList<>();
+                wallBrackets.add(existingWallBracket);
+
+                List<Television> televisions = new ArrayList<>();
+                televisions.add(existingTelevision);
+                existingTelevision.setWallBrackets(wallBrackets);
+                existingWallBracket.setTelevisions(televisions); //Bi-directional
+            } else {
+                throw new RecordNotFoundException("Wall Bracket not found with this id: " +wallBracketId);
+            }
+            televisionRepository.save(existingTelevision);
+        } else {
+            throw new RecordNotFoundException("Television not found with this id: " +televisionId);
         }
     }
 }
