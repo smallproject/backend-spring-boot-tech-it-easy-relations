@@ -3,6 +3,7 @@ package nl.smallproject.www.techiteasy.models;
 import jakarta.persistence.*;
 
 import java.util.Date;
+import java.util.List;
 
 @Entity(name = "televisions")
 public class Television {
@@ -36,6 +37,16 @@ public class Television {
     @OneToOne(mappedBy = "television")
     private RemoteController remoteController;
 
+    @OneToMany(mappedBy = "television", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<CiModule> ciModule;
+
+    public List<CiModule> getCiModule() {
+        return ciModule;
+    }
+
+    public void setCiModule(List<CiModule> ciModule) {
+        this.ciModule = ciModule;
+    }
 
     public String getName() {
         return name;

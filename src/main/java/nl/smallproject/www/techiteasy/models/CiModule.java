@@ -19,6 +19,19 @@ public class CiModule {
     @Column(name = "price")
     private double price;
 
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "television_id")
+    private Television television;
+
+    public Television getTelevision() {
+        return television;
+    }
+
+    public void setTelevision(Television television) {
+        this.television = television;
+    }
+
     public long getId() {
         return id;
     }
