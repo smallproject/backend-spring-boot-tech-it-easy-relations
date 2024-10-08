@@ -10,7 +10,8 @@ public class RemoteControllerOutputDto {
     private String brand;
     private double price;
     private int originalStock;
-    private TelevisionOutputDto televisionOutputDto;
+//    removed probably unnecessary
+//    private TelevisionOutputDto televisionOutputDto;
 
     public void setOriginalStock(int originalStock) {
         this.originalStock = originalStock;
@@ -66,13 +67,5 @@ public class RemoteControllerOutputDto {
 
     public int getOriginalStock() {
         return originalStock;
-    }
-
-    public TelevisionOutputDto getTelevisionOutputDto() {
-        return televisionOutputDto;
-    }
-
-    public void setTelevisionOutputDto(TelevisionOutputDto televisionOutputDto) {
-        this.televisionOutputDto = televisionOutputDto;
     }
 }
