@@ -4,10 +4,12 @@ import nl.smallproject.www.techiteasy.dtos.RemoteController.RemoteControllerInpu
 import nl.smallproject.www.techiteasy.exceptions.RecordNotFoundException;
 import nl.smallproject.www.techiteasy.mappers.RemoteControllerMapper;
 import nl.smallproject.www.techiteasy.mappers.TelevisionMapper;
+import nl.smallproject.www.techiteasy.models.RemoteController;
 import nl.smallproject.www.techiteasy.models.Television;
 import nl.smallproject.www.techiteasy.dtos.Television.TelevisionInputDto;
 import nl.smallproject.www.techiteasy.dtos.Television.TelevisionOutputDto;
 import nl.smallproject.www.techiteasy.dtos.Television.TelevisionUpdateDto;
+import nl.smallproject.www.techiteasy.repositories.RemoteControllerRepository;
 import nl.smallproject.www.techiteasy.repositories.TelevisionRepository;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
@@ -20,10 +22,14 @@ import java.util.Optional;
 public class TelevisionService {
     private final TelevisionRepository televisionRepository;
     private final TelevisionMapper televisionMapper;
+    private final RemoteControllerService remoteControllerService;
+    private final RemoteControllerRepository remoteControllerRepository;
 
-    public TelevisionService(TelevisionRepository televisionRepository, TelevisionMapper televisionMapper) {
+    public TelevisionService(TelevisionRepository televisionRepository, TelevisionMapper televisionMapper, RemoteControllerMapper remoteControllerMapper, RemoteControllerService remoteControllerService, RemoteControllerRepository remoteControllerRepository) {
         this.televisionRepository = televisionRepository;
         this.televisionMapper = televisionMapper;
+        this.remoteControllerService = remoteControllerService;
+        this.remoteControllerRepository = remoteControllerRepository;
     }
 
     public List<TelevisionOutputDto> getAllTelevision() {
@@ -50,6 +56,13 @@ public class TelevisionService {
 
     public Television createTelevision(TelevisionInputDto televisionInputDto) {
         Television television = televisionMapper.televisionInputDtoToEntity(televisionInputDto);
+
+        if (televisionInputDto.getRemoteControllerInputDto() != null) {
+            RemoteController remoteController = remoteControllerService.createRemoteController(televisionInputDto.getRemoteControllerInputDto());
+            television.setRemoteController(remoteController);
+            remoteController.setTelevision(television); //bi-directional
+        }
+
         televisionRepository.save(television);
         return television;
     }

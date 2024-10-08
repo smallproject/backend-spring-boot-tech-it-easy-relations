@@ -30,6 +30,11 @@ public class TelevisionMapper {
         television.setVoiceControl(televisionInputDto.getVoiceControl());
         television.setHdr(televisionInputDto.getHdr());
 
+        if (televisionInputDto.getRemoteControllerInputDto() != null)
+        {
+            television.setRemoteController(remoteControllerMapper.remoteControllerInputDtoToEntity(televisionInputDto.getRemoteControllerInputDto()));
+        }
+
         return television;
     }
 
