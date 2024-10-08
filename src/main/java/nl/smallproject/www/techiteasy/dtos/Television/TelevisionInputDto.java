@@ -50,13 +50,8 @@ public class TelevisionInputDto {
 
     private RemoteControllerInputDto remoteControllerInputDto;
 
-    public RemoteControllerInputDto getRemoteControllerInputDto() {
-        return remoteControllerInputDto;
-    }
-
-    public void setRemoteControllerInputDto(RemoteControllerInputDto remoteControllerInputDto) {
-        this.remoteControllerInputDto = remoteControllerInputDto;
-    }
+//
+//    private List<CiModuleInputDto>
 
     public @NotBlank(message = "{television.name.notblank}") @Size(min = 3, max = 255, message = "{television.name.size}") String getName() {
         return name;
@@ -157,4 +152,14 @@ public class TelevisionInputDto {
     public void setHdr(@NotNull(message = "{television.hdr.notnull}") Boolean hdr) {
         this.hdr = hdr;
     }
+
+
+    public RemoteControllerInputDto getRemoteControllerInputDto() {
+        return remoteControllerInputDto;
+    }
+
+    public void setRemoteControllerInputDto(RemoteControllerInputDto remoteControllerInputDto) {
+        this.remoteControllerInputDto = remoteControllerInputDto;
+    }
+
 }
