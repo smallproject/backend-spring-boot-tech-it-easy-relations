@@ -1,18 +1,25 @@
 package nl.smallproject.www.techiteasy.mappers;
 
+import nl.smallproject.www.techiteasy.dtos.CiModule.CiModuleOutputDto;
+import nl.smallproject.www.techiteasy.models.CiModule;
 import nl.smallproject.www.techiteasy.models.Television;
 import nl.smallproject.www.techiteasy.dtos.Television.TelevisionInputDto;
 import nl.smallproject.www.techiteasy.dtos.Television.TelevisionOutputDto;
 import nl.smallproject.www.techiteasy.dtos.Television.TelevisionUpdateDto;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Component
 public class TelevisionMapper {
 
     private final RemoteControllerMapper remoteControllerMapper;
+    private final CiModuleMapper ciModuleMapper;
 
-    public TelevisionMapper(RemoteControllerMapper remoteControllerMapper) {
+    public TelevisionMapper(RemoteControllerMapper remoteControllerMapper, CiModuleMapper ciModuleMapper) {
         this.remoteControllerMapper = remoteControllerMapper;
+        this.ciModuleMapper = ciModuleMapper;
     }
 
     public Television televisionInputDtoToEntity(TelevisionInputDto televisionInputDto) {
@@ -54,12 +61,17 @@ public class TelevisionMapper {
         televisionOutputDto.setVoiceControl(television.getVoiceControl());
         televisionOutputDto.setHdr(television.getHdr());
 
-        if (television.getRemoteController() != null)
-        {
+        if (television.getRemoteController() != null) {
             televisionOutputDto.setRemoteControllerOutputDto(remoteControllerMapper.remoteControllerEntityToOutputDto(television.getRemoteController()));
         }
 
-
+        if (television.getCiModule() != null) {
+            List<CiModuleOutputDto> ciModulesOutputDto = new ArrayList<>();
+            for (var cimodule : television.getCiModule()) {
+                ciModulesOutputDto.add(ciModuleMapper.ciModuleEntityToOutputDto(cimodule));
+            }
+            televisionOutputDto.setCiModuleOutputDtos(ciModulesOutputDto);
+        }
         return televisionOutputDto;
     }
 
