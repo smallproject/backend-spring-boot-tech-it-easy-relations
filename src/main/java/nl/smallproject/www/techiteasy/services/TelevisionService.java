@@ -4,11 +4,13 @@ import nl.smallproject.www.techiteasy.dtos.RemoteController.RemoteControllerInpu
 import nl.smallproject.www.techiteasy.exceptions.RecordNotFoundException;
 import nl.smallproject.www.techiteasy.mappers.RemoteControllerMapper;
 import nl.smallproject.www.techiteasy.mappers.TelevisionMapper;
+import nl.smallproject.www.techiteasy.models.CiModule;
 import nl.smallproject.www.techiteasy.models.RemoteController;
 import nl.smallproject.www.techiteasy.models.Television;
 import nl.smallproject.www.techiteasy.dtos.Television.TelevisionInputDto;
 import nl.smallproject.www.techiteasy.dtos.Television.TelevisionOutputDto;
 import nl.smallproject.www.techiteasy.dtos.Television.TelevisionUpdateDto;
+import nl.smallproject.www.techiteasy.repositories.CiModuleRepository;
 import nl.smallproject.www.techiteasy.repositories.RemoteControllerRepository;
 import nl.smallproject.www.techiteasy.repositories.TelevisionRepository;
 import org.springframework.beans.BeanUtils;
@@ -24,12 +26,14 @@ public class TelevisionService {
     private final TelevisionMapper televisionMapper;
     private final RemoteControllerService remoteControllerService;
     private final RemoteControllerRepository remoteControllerRepository;
+    private final CiModuleRepository ciModuleRepository;
 
-    public TelevisionService(TelevisionRepository televisionRepository, TelevisionMapper televisionMapper, RemoteControllerMapper remoteControllerMapper, RemoteControllerService remoteControllerService, RemoteControllerRepository remoteControllerRepository) {
+    public TelevisionService(TelevisionRepository televisionRepository, TelevisionMapper televisionMapper, RemoteControllerMapper remoteControllerMapper, RemoteControllerService remoteControllerService, RemoteControllerRepository remoteControllerRepository, CiModuleRepository ciModuleRepository) {
         this.televisionRepository = televisionRepository;
         this.televisionMapper = televisionMapper;
         this.remoteControllerService = remoteControllerService;
         this.remoteControllerRepository = remoteControllerRepository;
+        this.ciModuleRepository = ciModuleRepository;
     }
 
     public List<TelevisionOutputDto> getAllTelevision() {
@@ -99,6 +103,31 @@ public class TelevisionService {
             televisionRepository.save(existingTelevision);
         } else {
             throw new RecordNotFoundException("Television not found with this id: " +televisionId);
+        }
+    }
+
+    public void assignCiModuleToTelevision(Long televisionId, Long ciModuleId) {
+        Optional<Television> televisionOptional = Optional.ofNullable(televisionRepository.findById(televisionId)
+                .orElseThrow(() -> new RecordNotFoundException("Television not found with this id: " + televisionId)));
+
+        Optional<CiModule> ciModuleOptional = Optional.ofNullable(ciModuleRepository.findById(ciModuleId)
+                .orElseThrow(() -> new RecordNotFoundException("CiModule not found with this id: " + ciModuleId)));
+
+        if (televisionOptional.isPresent()) {
+            Television existingTelevision = televisionOptional.get();
+
+            if (ciModuleOptional.isPresent()) {
+                CiModule existingCiModule = ciModuleOptional.get();
+                List<CiModule> CiModules = new ArrayList<>();
+                CiModules.add(existingCiModule);
+                existingTelevision.setCiModule(CiModules);
+                existingCiModule.setTelevision(existingTelevision); //Bi-directional
+            } else {
+                throw new RecordNotFoundException("CiModule not found with this id: " +ciModuleId);
+            }
+            televisionRepository.save(existingTelevision);
+        } else {
+            throw new RecordNotFoundException("Television not found with this id: " + televisionId);
         }
     }
 }
