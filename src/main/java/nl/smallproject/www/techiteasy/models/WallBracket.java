@@ -2,6 +2,8 @@ package nl.smallproject.www.techiteasy.models;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 @Table(name = "wallbrackets")
 public class WallBracket {
@@ -20,6 +22,18 @@ public class WallBracket {
 
     @Column(name = "price")
     private double price;
+
+    @ManyToMany
+    @JoinTable(name = "televisions_brackets", joinColumns = @JoinColumn(name = "wallbracket_id"), inverseJoinColumns = @JoinColumn(name = "television_id"))
+    private List<Television> televisions;
+
+    public List<Television> getTelevisions() {
+        return televisions;
+    }
+
+    public void setTelevisions(List<Television> televisions) {
+        this.televisions = televisions;
+    }
 
     public long getId() {
         return id;

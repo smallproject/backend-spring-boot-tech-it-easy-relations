@@ -40,12 +40,15 @@ public class Television {
     @OneToMany(mappedBy = "television", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<CiModule> ciModule;
 
-    public List<CiModule> getCiModule() {
-        return ciModule;
+    @ManyToMany(mappedBy = "televisions", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<WallBracket> wallBrackets;
+
+    public List<WallBracket> getWallBrackets() {
+        return wallBrackets;
     }
 
-    public void setCiModule(List<CiModule> ciModule) {
-        this.ciModule = ciModule;
+    public void setWallBrackets(List<WallBracket> wallBrackets) {
+        this.wallBrackets = wallBrackets;
     }
 
     public String getName() {
@@ -183,4 +186,14 @@ public class Television {
     public void setRemoteController(RemoteController remoteController) {
         this.remoteController = remoteController;
     }
+
+    public List<CiModule> getCiModule() {
+        return ciModule;
+    }
+
+    public void setCiModule(List<CiModule> ciModule) {
+        this.ciModule = ciModule;
+    }
+
+
 }
