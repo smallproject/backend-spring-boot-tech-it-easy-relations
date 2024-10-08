@@ -84,4 +84,11 @@ public class TelevisionsController {
         televisionService.assignRemoteControllerToTelevision(televisionId, remoteControllerId);
         return ResponseEntity.noContent().build();
     }
+
+
+    @RequestMapping(value = "{televisionId}/cimodule/{ciModuleId}", method = RequestMethod.PUT)
+    public ResponseEntity<Object> assignCiModuleToTelevision(@PathVariable Long televisionId, @PathVariable Long ciModuleId) {
+        televisionService.assignCiModuleToTelevision(televisionId, ciModuleId);
+        return ResponseEntity.noContent().build();
+    }
 }
