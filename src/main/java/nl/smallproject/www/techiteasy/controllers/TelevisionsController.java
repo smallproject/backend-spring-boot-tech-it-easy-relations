@@ -85,10 +85,16 @@ public class TelevisionsController {
         return ResponseEntity.noContent().build();
     }
 
-
     @RequestMapping(value = "{televisionId}/cimodule/{ciModuleId}", method = RequestMethod.PUT)
     public ResponseEntity<Object> assignCiModuleToTelevision(@PathVariable Long televisionId, @PathVariable Long ciModuleId) {
         televisionService.assignCiModuleToTelevision(televisionId, ciModuleId);
         return ResponseEntity.noContent().build();
     }
+
+    @RequestMapping(value = "{televisionId}/wallbracket/{wallBracketId}", method = RequestMethod.PUT)
+    public ResponseEntity<Object> assignWallBracketToTelevision(@PathVariable Long televisionId,@PathVariable Long wallBracketId) {
+        televisionService.assignWallBracketToTelevision(televisionId, wallBracketId);
+        return ResponseEntity.noContent().build();
+    }
+
 }
