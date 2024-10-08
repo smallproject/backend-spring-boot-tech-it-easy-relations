@@ -4,6 +4,7 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.PositiveOrZero;
 import jakarta.validation.constraints.Size;
+import nl.smallproject.www.techiteasy.dtos.RemoteController.RemoteControllerInputDto;
 
 public class TelevisionInputDto {
 
@@ -46,6 +47,16 @@ public class TelevisionInputDto {
 
     @NotNull(message = "{television.hdr.notnull}")
     private Boolean hdr;
+
+    private RemoteControllerInputDto remoteControllerInputDto;
+
+    public RemoteControllerInputDto getRemoteControllerInputDto() {
+        return remoteControllerInputDto;
+    }
+
+    public void setRemoteControllerInputDto(RemoteControllerInputDto remoteControllerInputDto) {
+        this.remoteControllerInputDto = remoteControllerInputDto;
+    }
 
     public @NotBlank(message = "{television.name.notblank}") @Size(min = 3, max = 255, message = "{television.name.size}") String getName() {
         return name;
