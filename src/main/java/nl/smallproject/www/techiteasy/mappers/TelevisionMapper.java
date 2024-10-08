@@ -53,7 +53,12 @@ public class TelevisionMapper {
         televisionOutputDto.setSmartTv(television.getSmartTv());
         televisionOutputDto.setVoiceControl(television.getVoiceControl());
         televisionOutputDto.setHdr(television.getHdr());
-        televisionOutputDto.setRemoteControllerOutputDto(remoteControllerMapper.remoteControllerEntityToOutputDto(television.getRemoteController()));
+
+        if (television.getRemoteController() != null)
+        {
+            televisionOutputDto.setRemoteControllerOutputDto(remoteControllerMapper.remoteControllerEntityToOutputDto(television.getRemoteController()));
+        }
+
 
         return televisionOutputDto;
     }
