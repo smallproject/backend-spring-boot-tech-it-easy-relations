@@ -27,8 +27,13 @@ public class Television {
     private Boolean voiceControl;
     private Boolean hdr;
 
-    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JoinColumn(name = "remotecontroller", referencedColumnName = "id", nullable = true)
+//    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+//    @JoinColumn(name = "remotecontroller", referencedColumnName = "id", nullable = true)
+//    private RemoteController remoteController;
+
+//    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+//    @JoinColumn(name = "remotecontroller", referencedColumnName = "id", nullable = true)
+    @OneToOne(mappedBy = "television")
     private RemoteController remoteController;
 
 

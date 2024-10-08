@@ -27,7 +27,10 @@ public class RemoteController {
     @Column(name = "originalstock")
     private int originalStock;
 
-    @OneToOne(mappedBy = "remoteController")
+//    @OneToOne(mappedBy = "remoteController")
+//    private Television television;
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JoinColumn(name = "television_id", referencedColumnName = "id", nullable = true)
     private Television television;
 
     public long getId() {
