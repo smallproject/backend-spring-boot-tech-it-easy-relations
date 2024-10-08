@@ -1,6 +1,9 @@
 package nl.smallproject.www.techiteasy.dtos.Television;
 
+import nl.smallproject.www.techiteasy.dtos.CiModule.CiModuleOutputDto;
 import nl.smallproject.www.techiteasy.dtos.RemoteController.RemoteControllerOutputDto;
+
+import java.util.List;
 
 public class TelevisionOutputDto {
 
@@ -32,12 +35,14 @@ public class TelevisionOutputDto {
 
     private RemoteControllerOutputDto remoteControllerOutputDto;
 
-    public RemoteControllerOutputDto getRemoteControllerOutputDto() {
-        return remoteControllerOutputDto;
+    private List<CiModuleOutputDto> ciModuleOutputDtos;
+
+    public List<CiModuleOutputDto> getCiModuleOutputDtos() {
+        return ciModuleOutputDtos;
     }
 
-    public void setRemoteControllerOutputDto(RemoteControllerOutputDto remoteControllerOutputDto) {
-        this.remoteControllerOutputDto = remoteControllerOutputDto;
+    public void setCiModuleOutputDtos(List<CiModuleOutputDto> ciModuleOutputDtos) {
+        this.ciModuleOutputDtos = ciModuleOutputDtos;
     }
 
     public String getName() {
@@ -143,4 +148,13 @@ public class TelevisionOutputDto {
     public void setHdr(Boolean hdr) {
         this.hdr = hdr;
     }
+
+    public RemoteControllerOutputDto getRemoteControllerOutputDto() {
+        return remoteControllerOutputDto;
+    }
+
+    public void setRemoteControllerOutputDto(RemoteControllerOutputDto remoteControllerOutputDto) {
+        this.remoteControllerOutputDto = remoteControllerOutputDto;
+    }
+
 }
