@@ -1,13 +1,29 @@
 package nl.smallproject.www.techiteasy.mappers;
 
+import nl.smallproject.www.techiteasy.dtos.CiModule.CiModuleOutputDto;
+import nl.smallproject.www.techiteasy.dtos.WallBracket.WallBracketOutputDto;
+import nl.smallproject.www.techiteasy.models.CiModule;
 import nl.smallproject.www.techiteasy.models.Television;
-import nl.smallproject.www.techiteasy.dtos.TelevisionInputDto;
-import nl.smallproject.www.techiteasy.dtos.TelevisionOutputDto;
-import nl.smallproject.www.techiteasy.dtos.TelevisionUpdateDto;
+import nl.smallproject.www.techiteasy.dtos.Television.TelevisionInputDto;
+import nl.smallproject.www.techiteasy.dtos.Television.TelevisionOutputDto;
+import nl.smallproject.www.techiteasy.dtos.Television.TelevisionUpdateDto;
 import org.springframework.stereotype.Component;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Component
 public class TelevisionMapper {
+
+    private final RemoteControllerMapper remoteControllerMapper;
+    private final CiModuleMapper ciModuleMapper;
+    private final WallBracketMapper wallBracketMapper;
+
+    public TelevisionMapper(RemoteControllerMapper remoteControllerMapper, CiModuleMapper ciModuleMapper, WallBracketMapper wallBracketMapper) {
+        this.remoteControllerMapper = remoteControllerMapper;
+        this.ciModuleMapper = ciModuleMapper;
+        this.wallBracketMapper = wallBracketMapper;
+    }
 
     public Television televisionInputDtoToEntity(TelevisionInputDto televisionInputDto) {
         Television television = new Television();
@@ -23,6 +39,11 @@ public class TelevisionMapper {
         television.setSmartTv(televisionInputDto.getSmartTv());
         television.setVoiceControl(televisionInputDto.getVoiceControl());
         television.setHdr(televisionInputDto.getHdr());
+
+        if (televisionInputDto.getRemoteControllerInputDto() != null)
+        {
+            television.setRemoteController(remoteControllerMapper.remoteControllerInputDtoToEntity(televisionInputDto.getRemoteControllerInputDto()));
+        }
 
         return television;
     }
@@ -43,6 +64,25 @@ public class TelevisionMapper {
         televisionOutputDto.setVoiceControl(television.getVoiceControl());
         televisionOutputDto.setHdr(television.getHdr());
 
+        if (television.getRemoteController() != null) {
+            televisionOutputDto.setRemoteControllerOutputDto(remoteControllerMapper.remoteControllerEntityToOutputDto(television.getRemoteController()));
+        }
+
+        if (television.getCiModule() != null) {
+            List<CiModuleOutputDto> ciModulesOutputDto = new ArrayList<>();
+            for (var cimodule : television.getCiModule()) {
+                ciModulesOutputDto.add(ciModuleMapper.ciModuleEntityToOutputDto(cimodule));
+            }
+            televisionOutputDto.setCiModuleOutputDtos(ciModulesOutputDto);
+        }
+
+        if (television.getWallBrackets() != null) {
+            List<WallBracketOutputDto> wallBracketOutputDtos = new ArrayList<>();
+            for (var wallBracket: television.getWallBrackets()) {
+                wallBracketOutputDtos.add(wallBracketMapper.wallBracketEntityToOutputDto(wallBracket));
+            }
+            televisionOutputDto.setWallBracketOutputDtos(wallBracketOutputDtos);
+        }
         return televisionOutputDto;
     }
 

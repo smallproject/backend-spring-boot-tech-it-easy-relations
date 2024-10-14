@@ -1,11 +1,9 @@
 package nl.smallproject.www.techiteasy.controllers;
 
 import jakarta.validation.Valid;
-import nl.smallproject.www.techiteasy.dtos.TelevisionSalesOutputDto;
-import nl.smallproject.www.techiteasy.dtos.TelevisionSalesUpdateDto;
+import nl.smallproject.www.techiteasy.dtos.Television.TelevisionSalesOutputDto;
+import nl.smallproject.www.techiteasy.dtos.Television.TelevisionSalesUpdateDto;
 import nl.smallproject.www.techiteasy.services.TelevisionSalesService;
-import nl.smallproject.www.techiteasy.services.TelevisionService;
-import org.apache.coyote.Response;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,20 +13,18 @@ import java.util.List;
 @RequestMapping("api/sales/television")
 public class TelevisionsSalesController {
     private final TelevisionSalesService televisionSalesService;
-    private final TelevisionService televisionService;
 
-    public TelevisionsSalesController(TelevisionSalesService televisionSalesService, TelevisionService televisionService) {
+    public TelevisionsSalesController(TelevisionSalesService televisionSalesService) {
         this.televisionSalesService = televisionSalesService;
-        this.televisionService = televisionService;
     }
 
-    @GetMapping
+    @RequestMapping(method = RequestMethod.GET)
     public ResponseEntity<List<TelevisionSalesOutputDto>> getAllTelevisionSales() {
         List<TelevisionSalesOutputDto> televisionSalesOutputDtos = televisionSalesService.getAllTelevisionSales();
         return ResponseEntity.ok(televisionSalesOutputDtos);
     }
 
-    @GetMapping("{id}")
+    @RequestMapping(value ="{id}", method = RequestMethod.GET)
     public ResponseEntity<TelevisionSalesOutputDto> getTelevisionById(@PathVariable Long id) {
         TelevisionSalesOutputDto televisionSalesOutputDto = televisionSalesService.getTelevisionById(id);
         return ResponseEntity.ok(televisionSalesOutputDto);

@@ -1,4 +1,4 @@
-package nl.smallproject.www.techiteasy.dtos;
+package nl.smallproject.www.techiteasy.dtos.Television;
 
 public class TelevisionSalesOutputDto {
     private Long id;

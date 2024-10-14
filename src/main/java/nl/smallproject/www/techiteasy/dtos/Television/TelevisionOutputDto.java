@@ -1,4 +1,11 @@
-package nl.smallproject.www.techiteasy.dtos;
+package nl.smallproject.www.techiteasy.dtos.Television;
+
+import nl.smallproject.www.techiteasy.dtos.CiModule.CiModuleOutputDto;
+import nl.smallproject.www.techiteasy.dtos.RemoteController.RemoteControllerOutputDto;
+import nl.smallproject.www.techiteasy.dtos.WallBracket.WallBracketOutputDto;
+import nl.smallproject.www.techiteasy.models.WallBracket;
+
+import java.util.List;
 
 public class TelevisionOutputDto {
 
@@ -27,6 +34,14 @@ public class TelevisionOutputDto {
     private Boolean voiceControl;
 
     private Boolean hdr;
+
+    private RemoteControllerOutputDto remoteControllerOutputDto;
+
+    private List<CiModuleOutputDto> ciModuleOutputDtos;
+
+    public List<WallBracketOutputDto> getWallBracketOutputDtos() {
+        return wallBracketOutputDtos;
+    }
 
     public String getName() {
         return name;
@@ -131,4 +146,28 @@ public class TelevisionOutputDto {
     public void setHdr(Boolean hdr) {
         this.hdr = hdr;
     }
+
+    public RemoteControllerOutputDto getRemoteControllerOutputDto() {
+        return remoteControllerOutputDto;
+    }
+
+    public void setRemoteControllerOutputDto(RemoteControllerOutputDto remoteControllerOutputDto) {
+        this.remoteControllerOutputDto = remoteControllerOutputDto;
+    }
+
+    public List<CiModuleOutputDto> getCiModuleOutputDtos() {
+        return ciModuleOutputDtos;
+    }
+
+    public void setCiModuleOutputDtos(List<CiModuleOutputDto> ciModuleOutputDtos) {
+        this.ciModuleOutputDtos = ciModuleOutputDtos;
+    }
+
+
+    public void setWallBracketOutputDtos(List<WallBracketOutputDto> wallBracketOutputDtos) {
+        this.wallBracketOutputDtos = wallBracketOutputDtos;
+    }
+
+    private List<WallBracketOutputDto> wallBracketOutputDtos;
+
 }

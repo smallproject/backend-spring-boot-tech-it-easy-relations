@@ -1,9 +1,9 @@
 package nl.smallproject.www.techiteasy.controllers;
 
 import jakarta.validation.Valid;
-import nl.smallproject.www.techiteasy.dtos.TelevisionInputDto;
-import nl.smallproject.www.techiteasy.dtos.TelevisionOutputDto;
-import nl.smallproject.www.techiteasy.dtos.TelevisionUpdateDto;
+import nl.smallproject.www.techiteasy.dtos.Television.TelevisionInputDto;
+import nl.smallproject.www.techiteasy.dtos.Television.TelevisionOutputDto;
+import nl.smallproject.www.techiteasy.dtos.Television.TelevisionUpdateDto;
 import nl.smallproject.www.techiteasy.services.TelevisionService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -27,14 +27,20 @@ public class TelevisionsController {
 //        Television television = televisionService.getTelevisionById(id);
 //        return ResponseEntity.ok(television);
 //    }
+    @RequestMapping(method = RequestMethod.GET)
+    public ResponseEntity<List<TelevisionOutputDto>> getAllTelevisions() {
 
-    @GetMapping("/{id}")
+        List<TelevisionOutputDto> televisionOutputDtos = televisionService.getAllTelevision();
+        return ResponseEntity.ok(televisionOutputDtos);
+    }
+
+    @RequestMapping(value ="/{id}", method = RequestMethod.GET)
     public ResponseEntity<TelevisionOutputDto> getTelevisionById(@PathVariable Long id) {
         TelevisionOutputDto televisionOutputDto = televisionService.getTelevisionById(id);
         return ResponseEntity.ok(televisionOutputDto);
     }
 
-    @PostMapping()
+    @RequestMapping(method = RequestMethod.POST)
     public ResponseEntity<Object> createTelevision(@Valid @RequestBody TelevisionInputDto televisionInputDto) {
 //        moet aanpassen
 //        want die moet je van elke exception schrijven
@@ -73,9 +79,22 @@ public class TelevisionsController {
         return ResponseEntity.noContent().build();
     }
 
-    @GetMapping
-    public ResponseEntity<List<TelevisionOutputDto>> getAllTelevisions() {
-        List<TelevisionOutputDto> televisionOutputDtos = televisionService.getAllTelevision();
-        return ResponseEntity.ok(televisionOutputDtos);
+    @RequestMapping(value = "{televisionId}/remotecontroller/{remoteControllerId}", method = RequestMethod.PUT)
+    public ResponseEntity<Object> assignRemoteControllerToTelevision(@PathVariable Long televisionId, @PathVariable Long remoteControllerId) {
+        televisionService.assignRemoteControllerToTelevision(televisionId, remoteControllerId);
+        return ResponseEntity.noContent().build();
     }
+
+    @RequestMapping(value = "{televisionId}/cimodule/{ciModuleId}", method = RequestMethod.PUT)
+    public ResponseEntity<Object> assignCiModuleToTelevision(@PathVariable Long televisionId, @PathVariable Long ciModuleId) {
+        televisionService.assignCiModuleToTelevision(televisionId, ciModuleId);
+        return ResponseEntity.noContent().build();
+    }
+
+    @RequestMapping(value = "{televisionId}/wallbracket/{wallBracketId}", method = RequestMethod.PUT)
+    public ResponseEntity<Object> assignWallBracketToTelevision(@PathVariable Long televisionId,@PathVariable Long wallBracketId) {
+        televisionService.assignWallBracketToTelevision(televisionId, wallBracketId);
+        return ResponseEntity.noContent().build();
+    }
+
 }

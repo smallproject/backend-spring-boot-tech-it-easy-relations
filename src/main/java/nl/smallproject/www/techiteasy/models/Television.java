@@ -1,11 +1,9 @@
 package nl.smallproject.www.techiteasy.models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 import java.util.Date;
+import java.util.List;
 
 @Entity(name = "televisions")
 public class Television {
@@ -29,6 +27,29 @@ public class Television {
     private Boolean smartTv;
     private Boolean voiceControl;
     private Boolean hdr;
+
+//    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+//    @JoinColumn(name = "remotecontroller", referencedColumnName = "id", nullable = true)
+//    private RemoteController remoteController;
+
+//    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+//    @JoinColumn(name = "remotecontroller", referencedColumnName = "id", nullable = true)
+    @OneToOne(mappedBy = "television")
+    private RemoteController remoteController;
+
+    @OneToMany(mappedBy = "television", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<CiModule> ciModule;
+
+    @ManyToMany(mappedBy = "televisions", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<WallBracket> wallBrackets;
+
+    public List<WallBracket> getWallBrackets() {
+        return wallBrackets;
+    }
+
+    public void setWallBrackets(List<WallBracket> wallBrackets) {
+        this.wallBrackets = wallBrackets;
+    }
 
     public String getName() {
         return name;
@@ -157,4 +178,22 @@ public class Television {
     public void setHdr(Boolean hdr) {
         this.hdr = hdr;
     }
+
+    public RemoteController getRemoteController() {
+        return remoteController;
+    }
+
+    public void setRemoteController(RemoteController remoteController) {
+        this.remoteController = remoteController;
+    }
+
+    public List<CiModule> getCiModule() {
+        return ciModule;
+    }
+
+    public void setCiModule(List<CiModule> ciModule) {
+        this.ciModule = ciModule;
+    }
+
+
 }

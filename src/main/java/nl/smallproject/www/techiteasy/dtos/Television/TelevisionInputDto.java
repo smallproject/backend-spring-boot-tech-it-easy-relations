@@ -1,10 +1,12 @@
-package nl.smallproject.www.techiteasy.dtos;
+package nl.smallproject.www.techiteasy.dtos.Television;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.PositiveOrZero;
 import jakarta.validation.constraints.Size;
+import nl.smallproject.www.techiteasy.dtos.RemoteController.RemoteControllerInputDto;
 
-public class TelevisionUpdateDto {
+public class TelevisionInputDto {
 
     @NotBlank(message = "{television.name.notblank}")
     @Size(min = 3, max = 255, message = "{television.name.size}")
@@ -14,12 +16,16 @@ public class TelevisionUpdateDto {
     @Size(min = 3, max = 255, message = "{television.brand.size}")
     private String brand;
 
+    @PositiveOrZero(message = "{television.price.positiveornotzero}")
     private double price;
 
+    @PositiveOrZero(message = "{television.currentstock.positiveornotzero}")
     private int currentStock;
 
+    @PositiveOrZero(message = "{television.height.positiveornotzero}")
     private double height;
 
+    @PositiveOrZero(message = "{television.width.positiveornotzero}")
     private double width;
 
     @NotBlank(message = "{television.screenquality.notblank}")
@@ -42,6 +48,11 @@ public class TelevisionUpdateDto {
     @NotNull(message = "{television.hdr.notnull}")
     private Boolean hdr;
 
+    private RemoteControllerInputDto remoteControllerInputDto;
+
+//
+//    private List<CiModuleInputDto>
+
     public @NotBlank(message = "{television.name.notblank}") @Size(min = 3, max = 255, message = "{television.name.size}") String getName() {
         return name;
     }
@@ -58,35 +69,39 @@ public class TelevisionUpdateDto {
         this.brand = brand;
     }
 
+    @PositiveOrZero(message = "{television.price.positiveornotzero}")
     public double getPrice() {
         return price;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(@PositiveOrZero(message = "{television.price.positiveornotzero}") double price) {
         this.price = price;
     }
 
+    @PositiveOrZero(message = "{television.currentstock.positiveornotzero}")
     public int getCurrentStock() {
         return currentStock;
     }
 
-    public void setCurrentStock(int currentStock) {
+    public void setCurrentStock(@PositiveOrZero(message = "{television.currentstock.positiveornotzero}") int currentStock) {
         this.currentStock = currentStock;
     }
 
+    @PositiveOrZero(message = "{television.height.positiveornotzero}")
     public double getHeight() {
         return height;
     }
 
-    public void setHeight(double height) {
+    public void setHeight(@PositiveOrZero(message = "{television.height.positiveornotzero}") double height) {
         this.height = height;
     }
 
+    @PositiveOrZero(message = "{television.width.positiveornotzero}")
     public double getWidth() {
         return width;
     }
 
-    public void setWidth(double width) {
+    public void setWidth(@PositiveOrZero(message = "{television.width.positiveornotzero}") double width) {
         this.width = width;
     }
 
@@ -137,4 +152,14 @@ public class TelevisionUpdateDto {
     public void setHdr(@NotNull(message = "{television.hdr.notnull}") Boolean hdr) {
         this.hdr = hdr;
     }
+
+
+    public RemoteControllerInputDto getRemoteControllerInputDto() {
+        return remoteControllerInputDto;
+    }
+
+    public void setRemoteControllerInputDto(RemoteControllerInputDto remoteControllerInputDto) {
+        this.remoteControllerInputDto = remoteControllerInputDto;
+    }
+
 }
